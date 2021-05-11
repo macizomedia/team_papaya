@@ -3,7 +3,7 @@ import React from 'react'
 export default function index() {
     return (
         <div>
-            //TODO 
+           <h1> Home Page </h1>
         </div>
     )
 }

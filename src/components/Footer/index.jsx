@@ -17,7 +17,7 @@ export default function index() {
                                 <li className="footer__list-item">Sign Up</li>
                             </a>
                             <a href="!#">
-                                <li classNameName="footer__list-item">Downloads</li>
+                                <li className="footer__list-item">Downloads</li>
                             </a>
                             <ul>
                             </ul>

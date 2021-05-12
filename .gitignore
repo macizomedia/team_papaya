@@ -11,6 +11,8 @@
 # production
 /build
 /dist
+/api
+go.*
 
 # misc
 .DS_Store

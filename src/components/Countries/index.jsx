@@ -24,21 +24,34 @@ export default function index() {
 
     useEffect(() => { fetchData() }, []);
     return (
-        <div>
+        <div className="input-control">
             <input
+                className="input-large mb-3"
                 key="random1"
                 value={input}
                 placeholder={"search country"}
                 onChange={(e) => updateInput(e.target.value)}
             />
 
-            {input ? (countryList.map(item => (
-                <div key={item.name}>
-                    <p>{item.name}</p>
-                    <p>{item.capital}</p>
-                    <p>{item.population}</p>
-                </div>
-            ))) : (null)}
+            <div className="grid grid-cols-3 grid-gap-3">
+                {input ? (countryList.map(item => (
+                    /* MAP COUNTRY COMPONENT */
+                    <div className="card" key={item.name}>
+                        <div className="card__container">
+                            <div className="card__image" style={{
+                                backgroundImage: `url("https://picsum.photos/id/${(Math.floor(Math.random()* 1000) + 13)}/600/400")`
+                            }}></div>
+                            <div className="card__title-container">
+                                <p className="title">{item.name}</p><span className="subtitle">{item.capital}</span></div>
+                        </div>
+                        <div className="content">
+                            <div className="divider"></div>
+                            <p>{item.region}</p>
+                            <p>{item.population}</p>
+                        </div>
+                    </div>
+                ))) : (null)}
+            </div>
         </div>
     )
 }

@@ -1,6 +1,7 @@
+import React from 'react'
 import { createContext, Component } from "react";
 
-const galleryContext = createContext();
+const galleryContext = React.createContext();
 
 class CentralStore extends Component {
     constructor(props) {

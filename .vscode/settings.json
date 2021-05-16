@@ -1,7 +1,14 @@
 {
     "cSpell.words": [
+        "AUTHDOMAIN",
+        "CSRF",
+        "Genarator",
         "Ribeira",
+        "STORAGEBUCKET",
         "bson",
+        "firebaseconfig",
+        "godotenv",
+        "joho",
         "mongodb"
     ]
 }

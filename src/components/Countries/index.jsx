@@ -11,6 +11,7 @@ export default function index() {
             .then(data => {
                 setCountryList(data)
                 setCountryListDefault(data)
+                console.log(data)
             });
     }
 
@@ -33,7 +34,7 @@ export default function index() {
                 onChange={(e) => updateInput(e.target.value)}
             />
 
-            <div className="grid grid-cols-3 grid-gap-3">
+            <div className="grid grid-cols-2 grid-gap-1">
                 {input ? (countryList.map(item => (
                     /* MAP COUNTRY COMPONENT */
                     <div className="card" key={item.name}>
@@ -48,6 +49,7 @@ export default function index() {
                             <div className="divider"></div>
                             <p>{item.region}</p>
                             <p>{item.population}</p>
+                            <a href={`country/${item.alpha2Code.toLowerCase()}`}>{item.name}</a>
                         </div>
                     </div>
                 ))) : (null)}

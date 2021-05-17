@@ -5,6 +5,7 @@
         "Genarator",
         "Ribeira",
         "STORAGEBUCKET",
+        "browserslist",
         "bson",
         "firebaseconfig",
         "godotenv",

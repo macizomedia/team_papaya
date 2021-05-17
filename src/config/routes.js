@@ -1,11 +1,9 @@
-import React from "react";
 import Login from "../views/Login";
 import SignUp from "../views/SignUp";
 import AdminView from "../views/AdminView";
 import Home from "../views/Home";
 import Dashboard from "../components/Dashboard";
 import Country from "../components/Country"
-import { identity } from "rxjs";
 
 const routes = [
   {

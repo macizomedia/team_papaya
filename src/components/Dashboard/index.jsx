@@ -18,7 +18,7 @@ function Dashboard({ history }) {
         <div className="frame__header u-text-center">
           <div>
             <figure className="avatar">
-              <img src="https://orig04.deviantart.net/aded/f/2013/066/c/2/profile_picture_by_naivety_stock-d5x8lbn.jpg" />
+              <img alt="avatar" src="https://orig04.deviantart.net/aded/f/2013/066/c/2/profile_picture_by_naivety_stock-d5x8lbn.jpg" />
             </figure>
           </div>
           <div>
@@ -26,25 +26,25 @@ function Dashboard({ history }) {
             <div className="frame__subtitle">Freelance Photographer</div>
           </div>
           <div style={liStyle} className="row">
-            <a className="col" href="#">
+            <a className="col" href="https://www.facebook.com/">
               <i
                 className="fab fa-wrapper fa-facebook link-btn"
                 aria-hidden="true"
               ></i>
             </a>
-            <a className="col" href="#">
+            <a className="col" href="https://www.twitter.com/">
               <i
                 className="fab fa-wrapper fa-twitter link-btn"
                 aria-hidden="true"
               ></i>
             </a>
-            <a className="col" href="#">
+            <a className="col" href="https://www.instagram.com/">
               <i
                 className="fab fa-wrapper fa-instagram link-btn"
                 aria-hidden="true"
               ></i>
             </a>
-            <a className="col" href="#">
+            <a className="col" href="https://www.medium.com/">
               <i
                 className="fab fa-wrapper fa-medium link-btn"
                 aria-hidden="true"

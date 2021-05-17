@@ -9,7 +9,7 @@ function Dashboard({ history }) {
   const handleLogout = () => {
     console.log("LOGIN-OUT");
     logout(dispatch);
-    history.push("/login");
+    history.push("/");
   };
   return (
     <div style={{ padding: 10 }}>

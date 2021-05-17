@@ -13,13 +13,17 @@ export const initialState = {
 };
 
 export const AuthReducer = (initialState, action) => {
-  console.log("from reducer func " + action.payload);
+  console.log("from reducer func " + JSON.stringify(action.payload, null, 4) );
   switch (action.type) {
     case "REGISTER":
       return {
+        loading: true,
+      };
+    case "REGISTER_SUCCESS":
+      return {
         user: action.payload.name,
-        token: action.payload._id,
-        loading: false,
+        token: action.payload.password,
+        loading: true,
       };
     case "REQUEST_LOGIN":
       return {

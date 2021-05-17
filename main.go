@@ -184,8 +184,8 @@ func setUser(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		return
 	}
-	id := res.InsertedID
-	json.NewEncoder(w).Encode(id)
+	fmt.Println(res.InsertedID) 
+	json.NewEncoder(w).Encode(user)
 }
 func getUser(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("getuser Route ")

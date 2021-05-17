@@ -1,13 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import {
-    useParams,
-    useRouteMatch
-} from "react-router-dom";
-
+import { useParams } from "react-router-dom";
 
 export default function index() {
     let { id } = useParams()
-    console.log(id)
     const [country, setCountry] = useState()
     const fetchData = async () => {
 
@@ -18,7 +13,6 @@ export default function index() {
                 setCountry(data)
             });
     }
-
     useEffect(() => {
         fetchData()
 

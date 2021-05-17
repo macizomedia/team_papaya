@@ -2,15 +2,12 @@ import axios from "axios";
 import UsernameGenarator from "username-generator";
 import React, { useCallback } from "react";
 import { withRouter } from "react-router";
+import { signInUser, useAuthDispatch } from "../store";
 
-let endpoint = "http://localhost:8080";
 
 const SignUp = ({ history }) => {
-  const config = {
-    headers: {
-      "Content-type": "application/json; charset=UTF-8",
-    },
-  };
+  
+  const dispatch = useAuthDispatch(); 
   const createUser = (name, email, password) => {
     var username =
       name.value === "" ? UsernameGenarator.generateUsername() : name.value;
@@ -21,11 +18,10 @@ const SignUp = ({ history }) => {
     async (event) => {
       event.preventDefault();
       const { name, email, password } = event.target.elements;
-      var newUser = createUser(name, email, password);
+      var registerPayload = createUser(name, email, password);
       try {
-        await axios
-          .post(endpoint + "/user", newUser, config)
-          .then((res) => console.log(res.data));
+        let response = await signInUser(dispatch, registerPayload);
+        if (!response) return;
         history.push("/dashboard");
       } catch (error) {
         alert(error);

@@ -8,21 +8,19 @@ const config = {
 };
 
 export async function signInUser(dispatch, registerPayload) {
-  dispatch({ type: "REGISTER" });
 
   let body = JSON.stringify(registerPayload);
   let data;
   try {
-    dispatch({ type: "REQUEST_LOGIN" });
+  dispatch({ type: "REGISTER" });
     await axios.post(endpoint + "/user", body, config).then((res) => {
-      console.log(res.data);
       data = res.data;
     });
 
-    if (data[0].name) {
-      dispatch({ type: "LOGIN_SUCCESS", payload: data[0] });
-      localStorage.setItem("currentUser", JSON.stringify(data[0]));
-      return data[0];
+    if (data) {
+      dispatch({ type: "REGISTER_SUCCESS", payload: data });
+      localStorage.setItem("currentUser", JSON.stringify(data));
+      return data;
     }
 
     dispatch({ type: "LOGIN_ERROR", error: data.errors[0] });

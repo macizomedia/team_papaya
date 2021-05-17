@@ -1,4 +1,3 @@
-import axios from "axios";
 import UsernameGenarator from "username-generator";
 import React, { useCallback } from "react";
 import { withRouter } from "react-router";

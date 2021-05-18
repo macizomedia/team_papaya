@@ -64,8 +64,8 @@ export async function logout(dispatch) {
 }
 
 export async function like(dispatch, countryPayload) {
-    dispatch({ type: "LIKE" });
-    let data = JSON.stringify(countryPayload);
-    localStorage.setItem("country", data);
-    return data;
+    let data = countryPayload;
+    dispatch({ type: "LIKE", payload: data });
+    localStorage.setItem("country", JSON.stringify(data));
+    return data
 }

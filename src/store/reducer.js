@@ -14,7 +14,7 @@ export const initialState = {
     user: "" || user,
     token: "" || token,
     avatar: "" || avatar,
-    dreamList: "" || dreamList,
+    dreamList: [] || dreamList,
     loading: false,
     errorMessage: null,
 };
@@ -23,6 +23,7 @@ export const CountryReducer = (initialState, action) => {
     console.log(JSON.stringify(action.payload, null, 4));
     switch (action.type) {
         case "LIKE":
+            //initialState.dreamList.push(action.payload.country)
             return {
                 ...initialState,
                 dreamList: action.payload.country,

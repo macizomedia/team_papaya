@@ -42,6 +42,7 @@ export default function index() {
             .then((data) => {
                 console.log(data.response.results);
                 setPhotos(data.response.results);
+                console.log(data.length);
             });
     };
     useEffect(() => {
@@ -57,9 +58,9 @@ export default function index() {
     const dispatch = useCountryDispatch();
 
     /* const [dreamList, setDreamList] = useContext(CountryContext);
-    console.log(dreamList); */
+    console.log(dreamList); 
+    const [dreamList, setDreamList] = useState([]);*/
 
-    //const [dreamList, setDreamList] = useState([]);
     const addDreamList = async (e) => {
         e.preventDefault();
         console.log("click");
@@ -78,69 +79,77 @@ export default function index() {
     console.log(typeof photos);
 
     return (
-        <CountryProvider>
-            <div>
-                {country ? (
-                    <div className="card" style={{ maxWidth: "350px" }}>
-                        <div className="card__container">
-                            <div
-                                class="card__image"
-                                style={
-                                    {
-                                        /*  backgroundImage: `url(
-                                    "https://images.unsplash.com/photo-1511968822213-92de73315bba?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyMzE1Njd8MHwxfHNlYXJjaHw0fHxwb3J0dWdhbHxlbnwwfHx8fDE2MjEzMjM5NzQ&ixlib=rb-1.2.1&q=85"
-                                )`, */
-                                    }
-                                }
-                                style={{
-                                    backgroundImage: `url(
+        <div>
+            {country ? (
+                <div
+                    className="card"
+                    style={{
+                        maxWidth: "350px",
+                    }}
+                >
+                    <div className="card__container">
+                        <div
+                            class="card__image"
+                            style={{
+                                /*  backgroundImage: `url(
                                     ${photos ? photos[0].urls.full : null}
+                                )`, */
+                                backgroundImage: `url(
+                                    ${
+                                        photos
+                                            ? photos[
+                                                  Math.floor(Math.random() * 10)
+                                              ].urls.full
+                                            : null
+                                    }
                                 )`,
-                                }}
-                            ></div>
+                            }}
+                        ></div>
 
-                            <div className="card__title-container">
-                                {/* {country.map((item) => (
+                        <div className="card__title-container">
+                            {/* {country.map((item) => (
                                 <p className="title"> {item}</p>
                             ))} */}
-                                <p className="title">{country.name}</p>
-                                <span className="subtitle">
-                                    {country.subregion}
-                                </span>
-                            </div>
+                            <p className="title">{country.name}</p>
+                            <span className="subtitle">
+                                {country.subregion}
+                            </span>
                         </div>
-                        <div className="content">
-                            <p>Capital: {country.capital}</p>
-                            <p>Population: {country.population}</p>
-                            <p>Area: {country.area}km²</p>
-                            <p>Language: {country.languages[0].name}</p>
-                        </div>
-                        <div className="card__action-bar u-center">
-                            <button
-                                onClick={addDreamList}
-                                className="btn-link outline"
-                            >
-                                Add to my dream trip list!
-                            </button>
-                        </div>
-                        <div className="card__footer">
-                            <div className="u-text-center">
-                                <span>This is additional footer text in</span>
-                            </div>
-                        </div>
-
-                        <code>{JSON.stringify(country, null, 4)}</code>
-                        {photos
-                            ? photos.map((photo) => (
-                                  <div>
-                                      <img src={photo.urls.full} alt="" />
-                                  </div>
-                              ))
-                            : null}
                     </div>
-                ) : null}
-            </div>
-        </CountryProvider>
+                    <div className="content">
+                        <p>Capital: {country.capital}</p>
+                        <p>Population: {country.population}</p>
+                        <p>
+                            Area: {country.area}
+                            km²
+                        </p>
+                        <p>Language: {country.languages[0].name}</p>
+                    </div>
+                    <div className="card__action-bar u-center">
+                        <button
+                            onClick={addDreamList}
+                            className="btn-link outline"
+                        >
+                            Add to my dream trip list!
+                        </button>
+                    </div>
+                    <div className="card__footer">
+                        <div className="u-text-center">
+                            <span>This is additional footer text in</span>
+                        </div>
+                    </div>
+
+                    <code>{JSON.stringify(country, null, 4)}</code>
+                    {photos
+                        ? photos.map((photo) => (
+                              <div>
+                                  <img src={photo.urls.full} alt="" />
+                              </div>
+                          ))
+                        : null}
+                </div>
+            ) : null}
+        </div>
     );
 }
 

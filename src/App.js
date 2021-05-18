@@ -6,27 +6,30 @@ import { BrowserRouter as Router, Switch } from "react-router-dom";
 import routes from "./config/routes.js";
 import AppRoute from "./components/AppRoute.js";
 import "./App.css";
+import { CountryProvider } from "./store/CountryCtx";
 
 function App() {
     return (
         <AuthProvider>
-            <Navigation />
-            <main>
-                <br />
-                <Router>
-                    <Switch>
-                        {routes.map((route) => (
-                            <AppRoute
-                                key={route.path}
-                                path={route.path}
-                                component={route.component}
-                                isPrivate={route.isPrivate}
-                            />
-                        ))}
-                    </Switch>
-                </Router>
-            </main>
-            <Footer />
+            <CountryProvider>
+                <Navigation />
+                <main>
+                    <br />
+                    <Router>
+                        <Switch>
+                            {routes.map((route) => (
+                                <AppRoute
+                                    key={route.path}
+                                    path={route.path}
+                                    component={route.component}
+                                    isPrivate={route.isPrivate}
+                                />
+                            ))}
+                        </Switch>
+                    </Router>
+                </main>
+                <Footer />
+            </CountryProvider>
         </AuthProvider>
     );
 }

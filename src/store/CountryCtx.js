@@ -27,7 +27,9 @@ export const CountryProvider = ({ children }) => {
 
     return (
         <CountryContext.Provider value={{ dreamList, dispatch }}>
-            <useCountryDispatch value={dispatch}>{children}</useCountryDispatch>
+            <useCountryDispatch.Provider value={dispatch}>
+                {children}
+            </useCountryDispatch.Provider>
         </CountryContext.Provider>
     );
 };

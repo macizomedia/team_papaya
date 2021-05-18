@@ -1,0 +1,68 @@
+.App{
+    background-color:#BFCDD9;
+}
+
+.dashboard{
+    width: 100%;
+    height:auto;
+    
+   margin:10px;
+   padding:10px;
+   font-size: 2rem;
+   border-radius: 10px;
+}
+
+.display{
+    margin: 10px;
+    
+}
+
+h3{
+    padding: 10px;
+    /* margin: 10px; */
+
+}
+
+.frame,
+.card{
+    box-shadow: -3px 4px 10px gray;
+}
+
+.fig{
+    width: 100%;
+    padding: 10px;
+    color: #8C4F2B;    
+}
+
+.fig:hover{
+    text-decoration: none;
+}
+
+img,
+iframe{
+    border-radius: 10px;
+}
+a{
+    color: #51608C;
+    
+}
+a:hover{
+    text-decoration: none;
+}
+
+.Logout{
+    margin-bottom: 15px;
+    margin-top: 150px;
+}
+.ALink{
+    color: #51608C;
+   
+   
+
+} 
+.ALink:hover{
+    text-decoration: none;
+    
+    color: #BF8756;
+
+}

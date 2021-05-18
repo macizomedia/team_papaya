@@ -16,7 +16,7 @@ export const initialState = {
 };
 
 export const AuthReducer = (initialState, action) => {
-  console.log("from reducer func " + JSON.stringify(action.payload, null, 4) );
+  console.log("from reducer func" + JSON.stringify(action.payload, null, 4) );
   switch (action.type) {
     case "REGISTER":
       return {

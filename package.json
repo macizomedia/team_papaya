@@ -16,7 +16,9 @@
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "2.1.1",
+    "react-transition-group": "^4.4.1",
     "rxjs": "^7.0.1",
+    "unsplash-js": "^7.0.11",
     "username-generator": "^1.1.0"
   },
   "scripts": {
@@ -35,5 +37,10 @@
     "@types/react": "^17.0.5",
     "@types/react-router": "^5.1.14",
     "firebase-admin": "^9.8.0"
+  },
+  "react-dotenv": {
+    "whitelist": [
+      "API_URL"
+    ]
   }
 }

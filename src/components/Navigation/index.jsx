@@ -1,8 +1,15 @@
 import React from "react";
-import { useAuthState } from "../../store/index";
+import { logout, useAuthState, useAuthDispatch } from "../../store/index";
 
-export default function index() {
+export default function index({ history }) {
+
   const { currentUser } = useAuthState();
+  const dispatch = useAuthDispatch();
+  const handleLogout = () => {
+    console.log("LOGIN-OUT");
+    logout(dispatch);
+    history.push("/");
+  };
   return (
     <div className="header header-fixed unselectable header-animated">
       <div className="header-brand">
@@ -28,16 +35,13 @@ export default function index() {
         </div>
         <div className="nav-right">
           <div className="nav-item has-sub toggle-hover" id="dropdown">
-            <a href="#dropdown" className="nav-dropdown-link">Menu</a>
+            {!currentUser.token ? (<a href="/login"><i class="fas fa-sign-in-alt"></i></a>) : (<a href="#dropdown" className="nav-dropdown-link">Menu</a>)}
             <ul className="dropdown-menu dropdown-animated" role="menu">
               <li>
-                <a href="/login">LogIn</a>
+                {!currentUser.token ? (<a href="/signup">SignUp</a>) : (<a onClick={handleLogout} href="/">Logout</a>)}
               </li>
               <li>
-                <a href="/signup">SignUp</a>
-              </li>
-              <li>
-                <a href="/dashboard">My Dashboard</a>
+                {!currentUser.token ? (<a href="/about">About</a>) : (<a href="/dashboard">My Dashboard</a>)}
               </li>
             </ul>
           </div>

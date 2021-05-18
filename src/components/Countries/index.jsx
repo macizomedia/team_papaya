@@ -1,29 +1,31 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 
 export default function index() {
-    const [input, setInput] = useState('');
+    const [input, setInput] = useState("");
     const [countryListDefault, setCountryListDefault] = useState();
     const [countryList, setCountryList] = useState();
 
     const fetchData = async () => {
-        return await fetch('https://restcountries.eu/rest/v2/all')
-            .then(response => response.json())
-            .then(data => {
-                setCountryList(data)
-                setCountryListDefault(data)
-                console.log(data)
+        return await fetch("https://restcountries.eu/rest/v2/all")
+            .then((response) => response.json())
+            .then((data) => {
+                setCountryList(data);
+                setCountryListDefault(data);
+                console.log(data);
             });
-    }
+    };
 
     const updateInput = async (input) => {
-        const filtered = countryListDefault.filter(country => {
-            return country.name.toLowerCase().includes(input.toLowerCase())
-        })
+        const filtered = countryListDefault.filter((country) => {
+            return country.name.toLowerCase().includes(input.toLowerCase());
+        });
         setInput(input);
         setCountryList(filtered);
-    }
+    };
 
-    useEffect(() => { fetchData() }, []);
+    useEffect(() => {
+        fetchData();
+    }, []);
     return (
         <div className="input-control">
             <input
@@ -34,7 +36,7 @@ export default function index() {
                 onChange={(e) => updateInput(e.target.value)}
             />
 
-            <div className="grid grid-cols-2 grid-gap-1">
+            <div className="grid grid-cols-4 grid-gap-2">
                 {input ? (countryList.map(item => (
                     /* MAP COUNTRY COMPONENT */
                     <div className="card" key={item.name}>
@@ -55,5 +57,5 @@ export default function index() {
                 ))) : (null)}
             </div>
         </div>
-    )
+    );
 }

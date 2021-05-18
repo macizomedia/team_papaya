@@ -1,4 +1,3 @@
-
 import { useAuthDispatch, logout, useAuthState } from "../../store/index";
 import './Dashboard.css';
 import { createAvatar } from "@dicebear/avatars";

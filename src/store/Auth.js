@@ -4,6 +4,7 @@ import { AuthReducer, initialState } from "./reducer";
 export const AuthContext = React.createContext();
 export const AuthDispatchContext = React.createContext();
 
+
 export function useAuthState() {
   const context = React.useContext(AuthContext);
   if (context === undefined) {

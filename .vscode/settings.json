@@ -1,14 +1,17 @@
 {
     "cSpell.words": [
         "AUTHDOMAIN",
+        "Bitstream",
         "CSRF",
         "Genarator",
         "Ribeira",
         "STORAGEBUCKET",
         "browserslist",
         "bson",
+        "dicebear",
         "firebaseconfig",
         "godotenv",
+        "identicon",
         "joho",
         "mongodb"
     ]

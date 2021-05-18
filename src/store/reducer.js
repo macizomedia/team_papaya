@@ -4,10 +4,13 @@ let user = localStorage.getItem("currentUser")
 let token = localStorage.getItem("currentUser")
   ? JSON.parse(localStorage.getItem("currentUser")).password
   : "";
-
+let avatar = localStorage.getItem("currentUser")
+  ? JSON.parse(localStorage.getItem("currentUser")).avatar
+  : "https://avatars.dicebear.com/api/male/john.svg?background=%230000ff";
 export const initialState = {
   user: "" || user,
   token: "" || token,
+  avatar: "" || avatar,
   loading: false,
   errorMessage: null,
 };
@@ -23,6 +26,7 @@ export const AuthReducer = (initialState, action) => {
       return {
         user: action.payload.name,
         token: action.payload.password,
+        avatar: action.payload.avatar,
         loading: true,
       };
     case "REQUEST_LOGIN":

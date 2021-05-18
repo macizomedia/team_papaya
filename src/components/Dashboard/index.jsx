@@ -1,16 +1,19 @@
 import React from "react";
-import { useAuthDispatch, logout, useAuthState } from "../../store/index";
+import { useAuthState } from "../../store/index";
+import { createAvatar } from "@dicebear/avatars";
+import * as style from "@dicebear/avatars-male-sprites";
+
+let svg = createAvatar(style, {
+  seed: 'custom-seed',
+  radius: 30,
+  backgroundColor: '#272727'
+});
 
 function Dashboard({ history }) {
-  const dispatch = useAuthDispatch();
   const { currentUser } = useAuthState();
 
   const liStyle = { color: "red", fontSize: "23px" };
-  const handleLogout = () => {
-    console.log("LOGIN-OUT");
-    logout(dispatch);
-    history.push("/");
-  };
+
   return (
     <div style={{ padding: 10 }}>
       <h3 className="display">Welcome {currentUser.user}</h3>
@@ -18,7 +21,7 @@ function Dashboard({ history }) {
         <div className="frame__header u-text-center">
           <div>
             <figure className="avatar">
-              <img alt="avatar" src="https://orig04.deviantart.net/aded/f/2013/066/c/2/profile_picture_by_naivety_stock-d5x8lbn.jpg" />
+              <img alt="avatar" src={`${currentUser.avatar}/:seed.svg`} />
             </figure>
           </div>
           <div>
@@ -69,12 +72,6 @@ function Dashboard({ history }) {
             <i>Ohh Lorem.</i>
           </div>
         </div>
-      </div>
-      <div className="card">
-        <h1>Dashboard</h1>
-        <button className="btn-dark" onClick={handleLogout}>
-          Logout
-        </button>
       </div>
     </div>
   );

@@ -34,7 +34,7 @@ export default function index() {
                 onChange={(e) => updateInput(e.target.value)}
             />
 
-            <div className="grid grid-cols-2 grid-gap-1">
+            <div className="grid grid-cols-4 grid-gap-2">
                 {input ? (countryList.map(item => (
                     /* MAP COUNTRY COMPONENT */
                     <div className="card" key={item.name}>

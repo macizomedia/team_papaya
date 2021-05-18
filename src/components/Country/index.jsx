@@ -13,6 +13,7 @@ export default function index() {
     let countryName;
     const [country, setCountry] = useState();
     const [photos, setPhotos] = useState();
+
     const fetchData = async () => {
         return await fetch(`https://restcountries.eu/rest/v2/alpha/${id}`)
             .then((response) => response.json())
@@ -22,6 +23,7 @@ export default function index() {
                 console.log(countryName);
             });
     };
+
     const fetchImages = async (name) => {
         return await unsplash.search
             .getPhotos({

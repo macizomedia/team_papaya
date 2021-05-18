@@ -10,7 +10,7 @@ const SignUp = ({ history }) => {
   const createUser = (name, email, password) => {
     var username =
       name.value === "" ? UsernameGenarator.generateUsername() : name.value;
-    var user = { Name: username, Email: email.value, Password: password.value };
+    var user = { Name: username, Email: email.value, Password: password.value, Avatar:'https://avatars.dicebear.com/api/:sprites/:seed.svg' };
     return user;
   };
   const handleSigning = useCallback(

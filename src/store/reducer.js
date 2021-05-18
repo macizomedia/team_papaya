@@ -4,12 +4,29 @@ let user = localStorage.getItem("currentUser")
 let token = localStorage.getItem("currentUser")
   ? JSON.parse(localStorage.getItem("currentUser")).password
   : "";
-
+let dreamList = localStorage.getItem("currentUser")
+    ? JSON.parse(localStorage.getItem("currentUser")).list
+    : "countryList";
 export const initialState = {
-  user: "" || user,
-  token: "" || token,
-  loading: false,
-  errorMessage: null,
+    user: "" || user,
+    token: "" || token,
+    avatar: "" || avatar,
+    dreamList: [] || dreamList,
+    loading: false,
+    errorMessage: null,
+};
+
+export const CountryReducer = (initialState, action) => {
+    console.log(JSON.stringify(action.payload, null, 4));
+    switch (action.type) {
+        case "LIKE":
+            return {
+                ...initialState,
+                dreamList: action.payload.country,
+            };
+        default:
+            throw new Error(`Unhandled action type: ${action.type}`);
+    }
 };
 
 export const AuthReducer = (initialState, action) => {

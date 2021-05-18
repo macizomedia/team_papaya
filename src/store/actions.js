@@ -65,3 +65,10 @@ export async function logout(dispatch) {
   localStorage.removeItem("currentUser");
   localStorage.removeItem("token");
 }
+
+export async function like(dispatch, countryPayload) {
+    let data = countryPayload;
+    dispatch({ type: "LIKE", payload: data });
+    localStorage.setItem("country", JSON.stringify(data));
+    return data
+}

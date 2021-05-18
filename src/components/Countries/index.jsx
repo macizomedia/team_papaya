@@ -36,40 +36,25 @@ export default function index() {
                 onChange={(e) => updateInput(e.target.value)}
             />
 
-            <div className="grid grid-cols-2 grid-gap-1">
-                {input
-                    ? countryList.map((item) => (
-                          /* MAP COUNTRY COMPONENT */
-                          <div className="card" key={item.name}>
-                              <div className="card__container">
-                                  <div
-                                      className="card__image"
-                                      style={{
-                                          backgroundImage: `url("https://picsum.photos/id/${Math.floor(
-                                              Math.random() * 1000
-                                          ) + 13}/600/400")`,
-                                      }}
-                                  ></div>
-                                  <div className="card__title-container">
-                                      <p className="title">{item.name}</p>
-                                      <span className="subtitle">
-                                          {item.capital}
-                                      </span>
-                                  </div>
-                              </div>
-                              <div className="content">
-                                  <div className="divider"></div>
-                                  <p>{item.region}</p>
-                                  <p>{item.population}</p>
-                                  <a
-                                      href={`country/${item.alpha2Code.toLowerCase()}`}
-                                  >
-                                      {item.name}
-                                  </a>
-                              </div>
-                          </div>
-                      ))
-                    : null}
+            <div className="grid grid-cols-4 grid-gap-2">
+                {input ? (countryList.map(item => (
+                    /* MAP COUNTRY COMPONENT */
+                    <div className="card" key={item.name}>
+                        <div className="card__container">
+                            <div className="card__image" style={{
+                                backgroundImage: `url("https://picsum.photos/id/${(Math.floor(Math.random()* 1000) + 13)}/600/400")`
+                            }}></div>
+                            <div className="card__title-container">
+                                <p className="title">{item.name}</p><span className="subtitle">{item.capital}</span></div>
+                        </div>
+                        <div className="content">
+                            <div className="divider"></div>
+                            <p>{item.region}</p>
+                            <p>{item.population}</p>
+                            <a href={`country/${item.alpha2Code.toLowerCase()}`}>{item.name}</a>
+                        </div>
+                    </div>
+                ))) : (null)}
             </div>
         </div>
     );

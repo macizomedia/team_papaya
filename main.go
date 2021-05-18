@@ -43,9 +43,9 @@ type Users []User
 var collection *mongo.Collection
 
 var (
-    // key must be 16, 24 or 32 bytes long (AES-128, AES-192 or AES-256)
-    key = []byte("super-secret-key")
-    store = sessions.NewCookieStore(key)
+	// key must be 16, 24 or 32 bytes long (AES-128, AES-192 or AES-256)
+	key   = []byte("super-secret-key")
+	store = sessions.NewCookieStore(key)
 )
 
 // cookie handling
@@ -53,6 +53,7 @@ var (
 var cookieHandler = securecookie.New(
 	securecookie.GenerateRandomKey(64),
 	securecookie.GenerateRandomKey(32))
+
 func init() {
 	loadTheEnv()
 	createDBInstance()
@@ -87,11 +88,13 @@ func createDBInstance() {
 	collection = client.Database(dbName).Collection(collName)
 	fmt.Println("Collection instance created!")
 }
+
 // ErrorResponse : This is error model.
 type ErrorResponse struct {
 	StatusCode   int    `json:"status"`
 	ErrorMessage string `json:"message"`
 }
+
 // GetError : This is helper function to prepare error model.
 // If you want to export your function. You must to start upper case function name. Otherwise you won't see your function when you import that on other class.
 func GetError(err error, w http.ResponseWriter) {
@@ -133,16 +136,14 @@ func login(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Login Hited")
 	w.Header().Set("Content-Type", "application/json")
 	setupResponse(&w, r)
-    session, _ := store.Get(r, "cookie-name")
-	
+	session, _ := store.Get(r, "cookie-name")
 
-	
 	reqBody, _ := ioutil.ReadAll(r.Body)
 	var user User
 	json.Unmarshal(reqBody, &user)
-	
+
 	filter := bson.M{"email": user.Email}
-	err := collection.FindOne(context.TODO(), filter).Decode(&user)	
+	err := collection.FindOne(context.TODO(), filter).Decode(&user)
 
 	if err != nil {
 		GetError(err, w)
@@ -151,16 +152,16 @@ func login(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(user)
 
 	json.NewEncoder(w).Encode(user)
-	
-    session.Values["authenticated"] = true
-    session.Save(r, w)
+
+	session.Values["authenticated"] = true
+	session.Save(r, w)
 }
 func logout(w http.ResponseWriter, r *http.Request) {
-    session, _ := store.Get(r, "cookie-name")
+	session, _ := store.Get(r, "cookie-name")
 
-    // Revoke users authentication
-    session.Values["authenticated"] = false
-    session.Save(r, w)
+	// Revoke users authentication
+	session.Values["authenticated"] = false
+	session.Save(r, w)
 }
 func allUsers(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("users hit")
@@ -185,7 +186,7 @@ func setUser(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		return
 	}
-	fmt.Println(res.InsertedID) 
+	fmt.Println(res.InsertedID)
 	json.NewEncoder(w).Encode(user)
 }
 func getUser(w http.ResponseWriter, r *http.Request) {
@@ -203,6 +204,7 @@ func getUser(w http.ResponseWriter, r *http.Request) {
 
 	json.NewEncoder(w).Encode(User)
 }
+
 // func loginUser(w http.ResponseWriter, r *http.Request) {
 // 	fmt.Println("Login Route")
 // 	w.Header().Set("Content-Type", "application/json")
@@ -338,16 +340,16 @@ func deleteArticle(w http.ResponseWriter, r *http.Request) {
 }
 
 func homePage(w http.ResponseWriter, r *http.Request) {
-	 session, _ := store.Get(r, "cookie-name")
+	session, _ := store.Get(r, "cookie-name")
 
-    // Check if user is authenticated
-    if auth, ok := session.Values["authenticated"].(bool); !ok || !auth {
-        http.Error(w, "Forbidden", http.StatusForbidden)
-        return
-    }
+	// Check if user is authenticated
+	if auth, ok := session.Values["authenticated"].(bool); !ok || !auth {
+		http.Error(w, "Forbidden", http.StatusForbidden)
+		return
+	}
 
-    // Print secret message
-    fmt.Fprintln(w, "The cake is a lie!")
+	// Print secret message
+	fmt.Fprintln(w, "The cake is a lie!")
 	fmt.Fprintf(w, "Go Server!!")
 }
 

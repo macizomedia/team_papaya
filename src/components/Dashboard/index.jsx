@@ -11,16 +11,9 @@ import { VectorMap } from "react-jvectormap";
 
 
 function Dashboard({ history }) {
-  const dispatch = useAuthDispatch();
   const { currentUser } = useAuthState();
 
-  // const liStyle = { color: "red", fontSize: "23px" };
-  const handleLogout = () => {
-    console.log("LOGIN-OUT");
-    logout(dispatch);
-    history.push("/");
-  };
-
+  const liStyle = { color: "red", fontSize: "23px" };
 
   return (
     <div className="dashboard">

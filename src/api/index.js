@@ -27,7 +27,7 @@ export const fetchImages = (name) => {
     unsplash.search.getPhotos({
       query: name,
       page: 1,
-      perPage: 4,
+      perPage: 6,
     }).then(data => {
       observer.next(data.response.results);
       observer.complete();

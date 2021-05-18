@@ -5,7 +5,6 @@ import { createAvatar } from "@dicebear/avatars";
 import * as style from "@dicebear/micah";
 import Map from '../Map';
 import React, { useEffect, useState } from 'react';
-import Country from '../Country/index';
 import { VectorMap } from "react-jvectormap";
 import Users from '../Users'
 import Articles from '../Articles'

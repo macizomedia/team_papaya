@@ -5,7 +5,6 @@ import { createAvatar } from "@dicebear/avatars";
 import * as style from "@dicebear/micah";
 import Map from '../UserMap';
 import React, { useEffect, useState } from 'react';
-import Country from '../Country/index';
 import { VectorMap } from "react-jvectormap";
 
 
@@ -111,11 +110,6 @@ function Dashboard({ history }) {
             <iframe className="media-stretch rat-1-1" width="660" height="315" src="https://www.youtube.com/embed/4eIvzOmN0MU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </figcaption>
         </figure>
-
-
-        <button className="btn-dark Logout" onClick={handleLogout}>
-          Logout
-          </button>
       </div>
     </div >
   );

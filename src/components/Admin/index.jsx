@@ -6,9 +6,11 @@ import { switchMap, map, take, takeWhile, filter, flatMap } from "rxjs/operators
 
 let URL = 'https://restcountries.eu/rest/v2/all';
 
+/* FIRST Import API fetchData Function */
 /* Main Fetch Observable from api folder */
 const data$ = fetchData(URL);
 
+/* SECOND Pipe data$ and operate over the data */
 /* Definition of type of data to Subscribe */
 const currencies$ = data$.pipe(
   map(data => data.map(data => data.currencies)), /* data to data Array */
@@ -49,7 +51,7 @@ const Home = ({ history }) => {
   const { currentUser } = useAuthState()
   const [currencies, setCurrencies] = useState([])
   const [photos, setPhotos] = useState()
-
+  /* THIRD Use useObservable hook to set data to component state */
   /* Using Custom Hooks to consume data a feed the state */
   useObservable(photosArr$, setPhotos)
   useObservable(currencies$, setCurrencies) 

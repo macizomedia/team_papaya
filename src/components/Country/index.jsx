@@ -62,7 +62,22 @@ export default function index() {
             {country ? (
                 <div className="card" style={{ maxWidth: "350px" }}>
                     <div className="card__container">
-                        <div className="card__image"></div>
+                        <div
+                            class="card__image"
+                            style={
+                                {
+                                    /*  backgroundImage: `url(
+                                    "https://images.unsplash.com/photo-1511968822213-92de73315bba?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyMzE1Njd8MHwxfHNlYXJjaHw0fHxwb3J0dWdhbHxlbnwwfHx8fDE2MjEzMjM5NzQ&ixlib=rb-1.2.1&q=85"
+                                )`, */
+                                }
+                            }
+                            style={{
+                                backgroundImage: `url(
+                                    ${photos ? photos[0].urls.full : null}
+                                )`,
+                            }}
+                        ></div>
+
                         <div className="card__title-container">
                             {/* {country.map((item) => (
                                 <p className="title"> {item}</p>

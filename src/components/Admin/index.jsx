@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { fetchData, fetchImages } from "../../api";
 import { Link, Router } from "react-router-dom";
 import { useAuthState } from "../../store/index";
-import { switchMap, map, take, takeWhile, filter, flatMap } from "rxjs/operators";
+import { switchMap, map } from "rxjs/operators";
 
 let URL = 'https://restcountries.eu/rest/v2/all';
 
@@ -54,7 +54,7 @@ const Home = ({ history }) => {
   /* THIRD Use useObservable hook to set data to component state */
   /* Using Custom Hooks to consume data a feed the state */
   useObservable(photosArr$, setPhotos)
-  useObservable(currencies$, setCurrencies) 
+  useObservable(currencies$, setCurrencies)
 
   return (
     <>
@@ -62,7 +62,7 @@ const Home = ({ history }) => {
       {/* {photos ? (photos.map(unit => (<img key={unit.raw} src={unit.full}></img>))
       ) :(null)} */}
       {photos ? (
-        photos.map(photo => 
+        photos.map(photo =>
           (<img key={photo.id} src={photo.urls.full} alt={photos.alt_description}></img>)
         )
       ) : (null)}

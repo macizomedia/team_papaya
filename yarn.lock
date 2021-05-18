@@ -10221,7 +10221,7 @@ rxjs@^6.1.0, rxjs@^6.4.0:
 
 rxjs@^7.0.1:
   version "7.0.1"
-  resolved "https://registry.npmjs.org/rxjs/-/rxjs-7.0.1.tgz"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.0.1.tgz#5f41c4f991cea550471fc5d215727390103702c7"
   integrity sha512-wViQ4Vgps1xJwqWIBooMNN44usCSthL7wCUl4qWqrVjhGfWyVyXcxlYzfDKkJKACQvZMTOft/jJ3RkbwK1j9QQ==
   dependencies:
     tslib "~2.1.0"

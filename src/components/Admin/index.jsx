@@ -3,10 +3,6 @@ import { fetchData, fetchImages } from "../../api";
 import { Link, Router } from "react-router-dom";
 import { useAuthState } from "../../store/index";
 import { switchMap, map } from "rxjs/operators";
-import {
-    switchMap,
-    map,
-} from "rxjs/operators";
 
 let URL = "https://restcountries.eu/rest/v2/all";
 

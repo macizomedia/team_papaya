@@ -2,7 +2,12 @@
 
 import React from 'react'
 import  Admin from '../Admin'
+import { createAvatar } from "@dicebear/avatars";
+import * as style from "@dicebear/micah";
 
+let svg = createAvatar(style ,{
+    seed: 'custom-seed',
+});
 
 
 export default function index({avatar, user}) {

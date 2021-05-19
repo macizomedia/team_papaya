@@ -8,6 +8,7 @@ import AppRoute from "./components/AppRoute.js";
 import "./App.css";
 import { CountryProvider } from "./store/CountryProvider";
 
+
 function App() {
     return (
         <AuthProvider>
@@ -25,7 +26,9 @@ function App() {
                                     isPrivate={route.isPrivate}
                                 />
                             ))}
+                            
                         </Switch>
+                        
                     </Router>
                 </main>
                 <Footer />

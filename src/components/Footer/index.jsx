@@ -5,16 +5,26 @@ import papaya3 from "../../assets/img/biquiniPapaya.png";
 
 export default function index() {
     return (
-        <footer className="footer">
-            <div style={{ width: "10%", display: "flex" }}>
-                <img src={papaya1} alt="" />
-                <img src={papaya2} alt="" />
-                <img src={papaya3} alt="" />
+        <footer className="footer" style={{ backgroundColor: "#e21d22" }}>
+            <div
+                style={{
+                    width: "30%",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    margin: "0 auto",
+                }}
+            >
+                <div className="mx-3">
+                    <img src={papaya1} alt="" />
+                </div>
+                <div className="mx-3">
+                    <img src={papaya2} alt="" />
+                </div>
+                <div className="mx-3">
+                    <img src={papaya3} alt="" />
+                </div>
             </div>
-            {/* <h6 className="footer__title white uppercase">Logo</h6> */}
-            <div className="content">
-                <div className="divider"></div>
-            </div>
+
             <p className="subtitle">Company Papaya © 2021.</p>
         </footer>
     );

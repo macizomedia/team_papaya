@@ -9,8 +9,13 @@ const Map = () => {
     };
 
     return (
-        <div className="map card">
-            <h2 className="subtitle">Countries you have visited</h2>
+        <div
+            className="map card"
+            style={{ backgroundColor: "rgba(241, 221, 183, 0.8)" }}
+        >
+            <h2 className="subtitle" style={{ color: "#E65F44" }}>
+                Countries you have visited
+            </h2>
             <p>
                 {" "}
                 <i className="subtitle">(click on the map to select)</i>{" "}

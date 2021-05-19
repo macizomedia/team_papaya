@@ -1,61 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import { fetchData, fetchImages } from "../../api";
 import { createAvatar } from "@dicebear/avatars";
-import { switchMap, map } from "rxjs/operators";
-import { createApi } from "unsplash-js";
-import nodeFetch from "node-fetch";
 import * as style from "@dicebear/micah";
 
 createAvatar(style, {
     seed: 'custom-seed',
 });
-const unsplash = createApi({
-    accessKey: "7Ia8dL8h1dD2yr6pR_d49RHaFO-KxM-xyMnYaOP_-VM",
-    fetch: nodeFetch,
-});
-let URL = "https://restcountries.eu/rest/v2/all";
-
-const data$ = fetchData(URL);
-
-const photos$ = data$.pipe(
-    map((data) =>
-        data.map((data) => data.name.toLowerCase())
-    ) /* getting data name to goes to switchMap */,
-    switchMap((val) => fetchImages(val)) /* val is country name in lowerCase */,
-    map((result) =>
-        result.map((photo) => photo.urls)
-    ) /* Result is nested look on fetchImages function to see what is result */
-);
-const useObservable = (observable, setFunc) => {
-    useEffect(() => {
-        let subscription = observable.subscribe((result) => {
-            setFunc(result);
-        });
-        return () => subscription.unsubscribe();
-    }, [observable, setFunc]);
-};
 
 
 export default function index({ avatar, user, list }) {
-    const [photos, setPhotos] = useState([]);
-    const fetchImg = async (name) => {
-        return await unsplash.search
-            .getPhotos({
-                query: name,
-                page: 1,
-                perPage: 9,
-            })
-            .then((data) => {
-                setPhotos(photos.concat(data.response.results));
-            });
-    };
-
-    useEffect(() => {
-        list.map(item => fetchImg(item))
-        return () => { }
-    }, [])
-
-    console.log("from users" + JSON.stringify(photos, null, 4))
+    
 
     return (
         <>
@@ -104,18 +57,17 @@ export default function index({ avatar, user, list }) {
                         </div>
                         {list ? (list.map(item => (<div class="card">
                             <div class="card__header">
-                                <p class="font-bold px-3">{item}</p>
+                                <p class="font-bold px-3">{item.name}</p>
                             </div>
-                            <div style={{ minHeight: "300px" }}>
+                            <div style={{ minHeight: "200px" }}>
                                 <div className="card__container">
 
-                                    {photos ? photos.map(photo => (
                                         <div className="card__image"
-                                            style={{ backgroundImage: `url(${photo.urls.full})` }}
+                                            style={{ backgroundImage: `url(${item.image})` }}
                                         >
 
 
-                                        </div>)) : (null)}
+                                        </div>
                                 </div>
                             </div>
 

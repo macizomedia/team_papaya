@@ -58,7 +58,7 @@ export default function index() {
 
     const addDreamList = async (e) => {
         let list = currentUser.list
-        let payload = [...list, country.name]
+        let payload = [...list, {name: country.name, image: photos[2].urls.small}]
 
         e.preventDefault();
         try {

@@ -77,7 +77,7 @@ export default function index() {
                         className="u-round"
                     />
 
-                    {/* Card */}
+                    {/* ##### Card ###### */}
                     <div
                         className="card my-4 u-center"
                         style={{ maxWidth: "350px" }}
@@ -92,30 +92,34 @@ export default function index() {
                                 }}
                             ></div>
 
-                            <div className="card__title-container">
-                                {/* {country.map((item) => (
-                                <p className="title"> {item}</p>
-                            ))} */}
-                                {/* <p className="title">{country.name}</p>
-                                <span className="subtitle">
-                                    {country.subregion}
-                                </span> */}
-                            </div>
+                            <div className="card__title-container"></div>
                         </div>
                         <div className="content">
                             <p>
+                                <b>Continent: </b>
+                                {country.subregion}
+                            </p>
+                            <p>
                                 {" "}
-                                <b>Capital:</b>
+                                <b>Capital: </b>
                                 {country.capital}
                             </p>
                             <p>
                                 {" "}
-                                <b>Population:</b>
+                                <b>Population: </b>
                                 {country.population}
                             </p>
-                            <p>Area: {country.area}km²</p>
+                            <p>
+                                {" "}
+                                <b>Area: </b>
+                                {country.area}km²
+                            </p>
 
-                            <p>Language: {country.languages[0].name}</p>
+                            <p>
+                                {" "}
+                                <b>Language: </b>
+                                {country.languages[0].name}
+                            </p>
                         </div>
                         <div className="card__action-bar u-center">
                             <button
@@ -138,6 +142,7 @@ export default function index() {
                         </div>
                     </div>
 
+                    {/* ##### Photos ###### */}
                     <div className="row">
                         <div className="col-lg-6">
                             <img
@@ -201,22 +206,3 @@ export default function index() {
         </div>
     );
 }
-
-/*
-<div key={photo.description}>
-                                      <img src={photo.urls.full} alt="" />
-                                  </div>
-
-<figure class="fig">
-                            <img src="img/yosemite-falls.png" />
-                            <figcaption className="fig-caption u-text-center">
-                                Yosemite Valley, United States
-                            </figcaption>
-                        </figure>
-                        
-*/
-
-/* 
-                        <code>{JSON.stringify(country, null, 4)}</code>
-
-*/

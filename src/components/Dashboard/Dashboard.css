@@ -17,14 +17,16 @@
     
 }
 
-h3{
+h3,
+h2{
     padding: 10px;
     /* margin: 10px; */
 
 }
 
 .frame,
-.card{
+.card,
+.map{
     box-shadow: -3px 4px 10px gray;
 }
 

@@ -21,7 +21,9 @@ const handleClick = (e, countryCode) => {
 
 const Map = () => {
   return (
-    <div>
+    <div className="map">
+      <h2>Countries you have visited</h2>
+      <p> <i>(click on the map to select)</i> </p>
       <VectorMap        
         map={"world_mill"}
         backgroundColor="transparent" //change it to ocean blue: #0077be

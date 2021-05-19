@@ -9,7 +9,7 @@ export default function index() {
 
                 
             </div>
-            <p className="subtitle">Company © 2018.</p>
+            <p className="subtitle">Company Papaya © 2021.</p>
         </footer>
     )
 }

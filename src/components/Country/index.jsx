@@ -109,16 +109,16 @@ export default function index() {
                         </div>
                     </div>
 
+                    <code>{JSON.stringify(country, null, 4)}</code>
+                    {photos
+                        ? photos.map((photo) => (
+                            <div>
+                                <img src={photo.urls.full} alt="" />
+                            </div>
+                        ))
+                        : null}
                 </div>
             ) : null}
-            {photos
-                ? photos.map((photo) => (
-                    <div className="gird gird-col-2 grid-gap-2">
-
-                        <img src={photo.urls.full} alt="" />
-                    </div>
-                ))
-                : null}
         </div>
     );
 }

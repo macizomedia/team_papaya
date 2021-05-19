@@ -73,7 +73,7 @@ export default function index() {
         <div>
             {country ? (
                 <div>
-                    <h1>{country.name}</h1>
+                    <h1 className="headline-3 uppercase text-yellow-300">{country.name}</h1>
                     <img
                         src={photos ? photos[0].urls.full : null}
                         alt=""

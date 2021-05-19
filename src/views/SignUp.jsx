@@ -2,7 +2,6 @@ import UsernameGenarator from "username-generator";
 import React, { useCallback, useState } from "react";
 import { withRouter } from "react-router";
 import { signInUser, useAuthDispatch } from "../store";
-import { CSSTransition } from "react-transition-group";
 
 const SignUp = ({ history }) => {
     const [inProp, setInProp] = useState(false);

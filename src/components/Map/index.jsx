@@ -1,3 +1,4 @@
+import { getCode } from "country-list";
 import React from "react";
 import { VectorMap } from "react-jvectormap";
 
@@ -12,18 +13,19 @@ const Map = () => {
         <div className="map card">
             <h2 className="subtitle">Countries you have visited</h2>
             <p>
-                {" "}
-                <i className="subtitle">(click on the map to select)</i>{" "}
+                <i className="subtitle">(click on the map to select)</i>
             </p>
             <VectorMap
                 map={"world_mill"}
-                backgroundColor="#95c8f5" //change it to ocean blue: #0077be
+
+                backgroundColor="#95c8f5"
                 zoomOnScroll={true}
                 containerStyle={{
                     width: "100%",
                     height: "520px",
                 }}
                 onRegionClick={handleClick}
+                onRegionTipShow={(e) => getCode()}
                 containerClassName="map"
                 regionStyle={{
                     initial: {

@@ -15,7 +15,7 @@ const Home = (props) => {
                     alt=""
                     style={{ width: "30%", display: "inline" }}
                 />
-                <h1 className="display-2">Give me a country name</h1>
+                <h1 className="display-2 text-yellow-300">Give me a country name</h1>
             </div>
             {/* <h1 className="display-2">Papaya Explorer</h1> */}
             <Countries />

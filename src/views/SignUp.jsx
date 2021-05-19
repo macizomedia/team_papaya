@@ -16,9 +16,10 @@ const SignUp = ({ history }) => {
             Name: username,
             Email: email.value,
             Password: password.value,
-            avatar: `https://avatars.dicebear.com/api/${
+            Avatar: `https://avatars.dicebear.com/api/${
                 gender.value === "male" ? "male" : "female"
             }/`,
+            List: [] 
         };
         return user;
     };

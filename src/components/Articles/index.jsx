@@ -2,17 +2,20 @@ import React from "react";
 
 export default function index() {
     return (
-        <div className="card my-4">
+        <div className="card">
             <figure className="fig">
                 <figcaption className="fig-caption u-text-center">
                     <a
                         className="ALink"
                         href="https://naturebridge.org/programs/yosemite-school-environmental-science?gclid=CjwKCAjwqIiFBhAHEiwANg9szpbkA0VHAFdh_6SAX8doHIMnFs_Zz48KCmA74x7qSDvvR4k24lf9ARoCs60QAvD_BwE"
                     >
-                        {" "}
-                        Yosemite National Park
+                        <h1 className="subtitle ">
+                            {" "}
+                            <b>Yosemite National Park</b>
+                        </h1>
+
                         <p>
-                            <i>(click to see more)</i>
+                            <i className="subtitle">(click to see more)</i>
                         </p>
                     </a>
                     <img
@@ -26,16 +29,24 @@ export default function index() {
                         className="ALink"
                         href="https://www.germany.travel/en/home.html"
                     >
-                        Travel in Germany{" "}
+                        <h1 className="subtitle ">
+                            {" "}
+                            <b>Explore Germany</b>
+                        </h1>
+
                         <p>
-                            <i>(click to see more)</i>
+                            <i className="subtitle">(click to see more)</i>
                         </p>
                     </a>
                     <img src="https://cdn.cnn.com/cnnnext/dam/assets/170706112840-germany.jpg" />
                 </figcaption>
 
                 <figcaption className="fig-caption u-text-center">
-                    <h4>Travel tips</h4>
+                    <h1 className="subtitle ">
+                        {" "}
+                        <b>Safe Travel</b>
+                    </h1>
+
                     <iframe
                         className="media-stretch rat-1-1"
                         width="660"
@@ -45,9 +56,7 @@ export default function index() {
                         frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen
-                    >
-                        Some travel tips
-                    </iframe>
+                    ></iframe>
                 </figcaption>
 
                 <figcaption className="fig-caption u-text-center">
@@ -55,10 +64,11 @@ export default function index() {
                         className="ALink"
                         href="https://www.bucketlistly.blog/inspiration"
                     >
-                        Blog{" "}
-                        <p>
-                            <i>(click to see more)</i>
-                        </p>
+                        {" "}
+                        <h1 className="subtitle ">
+                            {" "}
+                            <b>Blog</b>
+                        </h1>
                     </a>
                     <iframe
                         className="media-stretch rat-1-1"

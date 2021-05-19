@@ -8,13 +8,12 @@ createAvatar(style, {
   seed: 'custom-seed',
 });
 
-
 export default function index({avatar, user}) {
 
     return (
         <div className="dashboard">
-            <h1>Dashboard</h1>
-            <h3 className="display">Welcome {user}</h3>
+          
+            <h3 className="display uppercasegit">Welcome {user}</h3>
             <div className="frame">
                 <div className="frame__header u-text-center">
                     <div>
@@ -24,31 +23,31 @@ export default function index({avatar, user}) {
 
                     </div>
                     <div>
-                        <div className="frame__title">{user}</div>
+                        <div className="frame__title font-bold">{user}</div>
                         <div className="frame__subtitle">
 
                         </div>
                     </div>
                     <div className="row">
-                        <a className="col" href="https://www.facebook.com/">
+                        <a className="col" style={{fontSize: 40}} href="https://www.facebook.com/">
                             <i
                                 className="fab fa-wrapper fa-facebook link-btn"
                                 aria-hidden="true"
                             ></i>
                         </a>
-                        <a className="col" href="https://www.twitter.com/">
+                        <a className="col" style={{fontSize: 40}} href="https://www.twitter.com/">
                             <i
                                 className="fab fa-wrapper fa-twitter link-btn"
                                 aria-hidden="true"
                             ></i>
                         </a>
-                        <a className="col" href="https://www.instagram.com/">
+                        <a className="col" style={{fontSize: 40}} href="https://www.instagram.com/">
                             <i
                                 className="fab fa-wrapper fa-instagram link-btn"
                                 aria-hidden="true"
                             ></i>
                         </a>
-                        <a className="col" href="https://www.medium.com/">
+                        <a className="col" style={{fontSize: 40}} href="https://www.medium.com/">
                             <i
                                 className="fab fa-wrapper fa-medium link-btn"
                                 aria-hidden="true"

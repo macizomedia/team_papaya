@@ -7,26 +7,26 @@ let token = localStorage.getItem("currentUser")
 let avatar = localStorage.getItem("currentUser")
     ? JSON.parse(localStorage.getItem("currentUser")).avatar
     : "https://avatars.dicebear.com/api/male/john.svg?background=%230000ff";
-let dreamList = localStorage.getItem("currentUser")
+let list = localStorage.getItem("currentUser")
     ? JSON.parse(localStorage.getItem("currentUser")).list
-    : "countryList";
+    : "";
+
 export const initialState = {
     user: "" || user,
     token: "" || token,
     avatar: "" || avatar,
-    dreamList: [] || dreamList,
+    list: ""|| list,
     loading: false,
     errorMessage: null,
 };
 
 export const CountryReducer = (initialState, action) => {
-    console.log(JSON.stringify(action.payload, null, 4));
+    console.log("from reducer", JSON.stringify(action.payload, null, 4));
     switch (action.type) {
         case "LIKE":
-            //initialState.dreamList.push(action.payload.country)
             return {
                 ...initialState,
-                dreamList: action.payload.country,
+                list: action.payload
             };
         default:
             throw new Error(`Unhandled action type: ${action.type}`);
@@ -44,6 +44,7 @@ export const AuthReducer = (initialState, action) => {
                 user: action.payload.name,
                 token: action.payload.password,
                 avatar: action.payload.avatar,
+                list: action.payload.list,
                 loading: true,
             };
         case "REQUEST_LOGIN":
@@ -56,6 +57,8 @@ export const AuthReducer = (initialState, action) => {
                 ...initialState,
                 user: action.payload.name,
                 token: action.payload.password,
+                avatar: action.payload.avatar,
+                list: action.payload.list,
                 loading: false,
             };
         case "LOGOUT":

@@ -4,8 +4,9 @@ import { createApi } from "unsplash-js";
 import nodeFetch from "node-fetch";
 import {
     like,
-    //useCountryState,
+    useAuthState,
     useCountryDispatch,
+    useCountryState,
 } from "../../store/index.js";
 
 const unsplash = createApi({
@@ -14,8 +15,14 @@ const unsplash = createApi({
 });
 
 export default function index() {
+
+    const {currentUser } = useAuthState()
+    const dispatch = useCountryDispatch();
+    const {currentList} = useCountryState();
     let { id } = useParams();
     let countryName;
+
+    console.log("from country" + JSON.stringify(currentList, null, 2))
 
     const [country, setCountry] = useState();
     const [photos, setPhotos] = useState();
@@ -38,25 +45,22 @@ export default function index() {
                 perPage: 9,
             })
             .then((data) => {
-                console.log(data.response.results);
                 setPhotos(data.response.results);
-                console.log(data.length);
             });
     };
     useEffect(() => {
+
         fetchData();
         setTimeout(() => {
             fetchImages(countryName);
         }, 900);
     }, [id]);
 
-    const dispatch = useCountryDispatch();
-
     const addDreamList = async (e) => {
+        let list = currentUser.list
+        let payload =  [...list, country.name]
+
         e.preventDefault();
-        console.log("click");
-        let payload = country.name;
-        console.log("payload at" + payload);
         try {
             let response = await like(dispatch, payload);
             if (!response) return;

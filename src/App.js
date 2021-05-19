@@ -10,6 +10,7 @@ import * as style from "@dicebear/micah";
 import { CountryProvider } from "./store/CountryProvider";
 import Wallpaper from "./img/wallpaper.png";
 
+
 function App() {
     return (
         <AuthProvider>
@@ -27,7 +28,9 @@ function App() {
                                     isPrivate={route.isPrivate}
                                 />
                             ))}
+                            
                         </Switch>
+                        
                     </Router>
                 </main>
                 <Footer />

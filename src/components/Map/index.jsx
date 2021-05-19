@@ -1,41 +1,14 @@
 
-import React, { useState } from "react";
+import React from "react";
 import { VectorMap } from "react-jvectormap";
 
-
-const randomColor = require('randomcolor'); // import the script
-
-randomColor({
-  count: 10,
-  // hue: 'green',
-  luminosity: 'light'
-});
-
-const mapData = {
-
-
-
-};
-
-// let newColor;
-let color;
-
-const handleClick = (e, countryCode) => {
-
-
-  color = randomColor();
-  console.log(color); 
-  // newColor = await Color();
-  // console.log(countryCode);
-  // console.log(newColor);
-};
-
-
-
-
 const Map = () => {
+let color = "#32991"
+const handleClick = (e) => {
 
-  const [state, setState] = useState();
+  console.log(e.currentTarget)
+  color = "#fff"
+};
 
   return (
     <div className="map ">
@@ -49,7 +22,7 @@ const Map = () => {
           width: "100%",
           height: "520px"
         }}
-        onRegionClick={handleClick} //gets the country code
+        onRegionClick={handleClick}
         containerClassName="map"
         regionStyle={{
           initial: {
@@ -65,7 +38,8 @@ const Map = () => {
             cursor: "pointer"
           },
           selected: {
-            fill: {color}
+            fill: `${color}`,
+            "fill-opacity": 1,
           },
           selectedHover: {
             fill: " #A9BF7A",
@@ -77,7 +51,6 @@ const Map = () => {
         series={{
           regions: [
             {
-              values: mapData, //this is your data
               scale: ["#BFCDD9", "#BF8756", "#8C4F2B"], //your color game's here
               normalizeFunction: "polynomial",
               fill: " #D9946C"

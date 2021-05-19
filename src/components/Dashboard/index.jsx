@@ -12,7 +12,7 @@ function Dashboard({ history }) {
 
     return (
         <div className="dashboard">
-            <Users avatar={currentUser.avatar} user={currentUser.user} />
+            <Users avatar={currentUser.avatar} user={currentUser.user} list={currentUser.list} />
             <Map />
             <Articles />
         </div>

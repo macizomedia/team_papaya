@@ -103,8 +103,16 @@ export default function index() {
                             </div>
                         </div>
                         <div className="content">
-                            <p>Capital: {country.capital}</p>
-                            <p>Population: {country.population}</p>
+                            <p>
+                                {" "}
+                                <b>Capital:</b>
+                                {country.capital}
+                            </p>
+                            <p>
+                                {" "}
+                                <b>Population:</b>
+                                {country.population}
+                            </p>
                             <p>Area: {country.area}km²</p>
 
                             <p>Language: {country.languages[0].name}</p>

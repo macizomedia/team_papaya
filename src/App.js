@@ -8,6 +8,7 @@ import AppRoute from "./components/AppRoute.js";
 import "./App.css";
 import * as style from "@dicebear/micah";
 import { CountryProvider } from "./store/CountryProvider";
+import Wallpaper from "./img/wallpaper.png";
 
 function App() {
     return (

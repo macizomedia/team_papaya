@@ -4,6 +4,7 @@ import Map from "../Map";
 import React from "react";
 import Users from "../Users";
 import Articles from "../Articles";
+import DreamList from "../DreamList/DreamList";
 
 function Dashboard({ history }) {
     const { currentUser } = useAuthState();
@@ -14,6 +15,7 @@ function Dashboard({ history }) {
         <div className="dashboard">
             <Users avatar={currentUser.avatar} user={currentUser.user} />
             <Map />
+            <DreamList />
             <Articles />
         </div>
     );

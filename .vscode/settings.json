@@ -6,6 +6,7 @@
         "Genarator",
         "Ribeira",
         "STORAGEBUCKET",
+        "allowfullscreen",
         "browserslist",
         "bson",
         "dicebear",
@@ -14,6 +15,11 @@
         "identicon",
         "joho",
         "jvectormap",
+<<<<<<< HEAD
+        "mongodb",
+        "xlarge"
+=======
         "mongodb"
+>>>>>>> 1c8a774377d7580cc7955d1fbaf3c91864fe1973
     ]
 }

@@ -31,7 +31,7 @@ const SignUp = ({ history }) => {
 
   return (
     <div className="content">
-      <CSSTransition in={inProp} timeout={1000} className="my-node">
+      <CSSTransition in={inProp} timeout={1000} classnames="my-node">
         <form className="frame p-3" onSubmit={handleSigning}>
           <div className="frame__body p-2">
             <div className="row p-3 level fill-height">

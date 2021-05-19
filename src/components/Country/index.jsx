@@ -67,7 +67,7 @@ export default function index() {
 
     console.log(Math.floor(Math.random() * 10));
     return (
-        <div>
+        <div >
             {country ? (
                 <div>
                     <h1>{country.name}</h1>

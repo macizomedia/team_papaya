@@ -14,7 +14,10 @@ export default function index({ history }) {
     <div className="header header-fixed unselectable header-animated">
       <div className="header-brand">
         <div className="nav-item no-hover">
-          <h6 className="title">{currentUser.user !== "" ? currentUser.user : "guest"}</h6>
+          <a href="/">
+
+            <h6 className="title">{currentUser.user !== "" ? currentUser.user : "Papaya"}</h6>
+          </a>
         </div>
         <div className="nav-item nav-btn" id="header-btn">
           <span></span> <span></span> <span></span>

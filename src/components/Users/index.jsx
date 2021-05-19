@@ -8,7 +8,6 @@ createAvatar(style, {
   seed: 'custom-seed',
 });
 
-
 export default function index({avatar, user}) {
 
     return (

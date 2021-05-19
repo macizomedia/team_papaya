@@ -16,9 +16,9 @@ const unsplash = createApi({
 
 export default function index() {
 
-    const {currentUser } = useAuthState()
+    const { currentUser } = useAuthState()
     const dispatch = useCountryDispatch();
-    const {currentList} = useCountryState();
+    const { currentList } = useCountryState();
     let { id } = useParams();
     let countryName;
 
@@ -58,7 +58,7 @@ export default function index() {
 
     const addDreamList = async (e) => {
         let list = currentUser.list
-        let payload =  [...list, country.name]
+        let payload = [...list, {name: country.name, image: photos[2].urls.small}]
 
         e.preventDefault();
         try {
@@ -199,6 +199,19 @@ export default function index() {
                     </div>
                 </div>
             ) : null}
+            <div class="placeholder">
+                <div class="placeholder-icon"><span class="icon"><i class="fa fa-wrapper fa-coffee x-large"></i></span></div>
+                <h6 class="placeholder-title">The sever is currently taking a nap.</h6>
+                <div class="placeholder-subtitle">Come back in a few hours or press the refresh button.</div>
+                <div class="placeholder-commands u-center">
+                    <div class="m-1">
+                        <button class="btn-primary">Refresh</button>
+                    </div>
+                    <div class="m-1">
+                        <button>Home</button>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }

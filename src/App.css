@@ -57,6 +57,12 @@ code:after {
     transition: opacity 1000ms;
 }
 
+body {
+    background-image: url("./assets/img/wallpaper.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
 /* .Home {
     background-image: "./img/wallpaper.png";
 }

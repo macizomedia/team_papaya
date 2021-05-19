@@ -1,6 +1,7 @@
 import React from "react";
 import Countries from "../components/Countries";
-import Wallpaper from "../img/wallpaper.png";
+
+import PapayaExplorer from "../assets/img/papaya_Logo.png";
 
 import { useCountryState } from "../store/index";
 const Home = (props) => {
@@ -8,7 +9,15 @@ const Home = (props) => {
     console.log(dreamList);
     return (
         <>
-            <h1 className="display-2">HOME</h1>
+            <div className="col-3" style={{}}>
+                <img
+                    src={PapayaExplorer}
+                    alt=""
+                    style={{ width: "30%", display: "inline" }}
+                />
+                <h1 className="display-2">Give me a country name</h1>
+            </div>
+            {/* <h1 className="display-2">Papaya Explorer</h1> */}
             <Countries />
         </>
     );

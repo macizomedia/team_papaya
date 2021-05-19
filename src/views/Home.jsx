@@ -1,7 +1,10 @@
 import React from "react";
 import Countries from "../components/Countries";
 
+import { useCountryState } from "../store/index"
 const Home = (props) => {
+  const { dreamList } = useCountryState()
+  console.log(dreamList)
   return (
     <>
       <h1 className="display-2">HOME</h1>

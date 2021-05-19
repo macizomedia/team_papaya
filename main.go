@@ -12,7 +12,6 @@ import (
 
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
-	"github.com/gorilla/securecookie"
 	"github.com/gorilla/sessions"
 	"github.com/joho/godotenv"
 
@@ -23,12 +22,16 @@ import (
 )
 
 type User struct {
-	Name     string `json:"name"`
-	Password string `json:"password"`
-	Email    string `json:"email"`
-	Avatar   string `json:"avatar"`
+	Name     string    `json:"name"`
+	Password string    `json:"password"`
+	Email    string    `json:"email"`
+	Avatar   string    `json:"avatar"`
+	List     []Country `json:"list"`
 }
 
+type Country struct {
+	Name string `json:"name"`
+}
 type Article struct {
 	Id      string `json:"Id"`
 	Title   string `json:"Title"`
@@ -49,11 +52,11 @@ var (
 )
 
 // cookie handling
-
+/*
 var cookieHandler = securecookie.New(
 	securecookie.GenerateRandomKey(64),
 	securecookie.GenerateRandomKey(32))
-
+*/
 func init() {
 	loadTheEnv()
 	createDBInstance()
@@ -113,7 +116,8 @@ func GetError(err error, w http.ResponseWriter) {
 func main() {
 	handleRequest()
 }
-func setSession(userName string, response http.ResponseWriter) {
+
+/* func setSession(userName string, response http.ResponseWriter) {
 	value := map[string]string{
 		"name": userName,
 	}
@@ -125,7 +129,7 @@ func setSession(userName string, response http.ResponseWriter) {
 		}
 		http.SetCookie(response, cookie)
 	}
-}
+} */
 
 func setupResponse(w *http.ResponseWriter, req *http.Request) {
 	(*w).Header().Set("Access-Control-Allow-Origin", "*")

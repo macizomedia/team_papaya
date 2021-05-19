@@ -2,6 +2,8 @@ import React from "react";
 import { useReducer } from "react";
 import { CountryReducer, initialState } from "./reducer";
 
+let list = initialState.list
+
 export const CountryContext = React.createContext();
 export const CountryDispatchContext = React.createContext();
 
@@ -23,10 +25,10 @@ export function useCountryDispatch() {
 }
 
 export function CountryProvider({ children }) {
-    const [currentUser, dispatch] = useReducer(CountryReducer, initialState);
+    const [currentList, dispatch] = useReducer(CountryReducer, list);
 
     return (
-        <CountryContext.Provider value={{ currentUser }}>
+        <CountryContext.Provider value={{ currentList }}>
             <CountryDispatchContext.Provider value={dispatch}>
                 {children}
             </CountryDispatchContext.Provider>

@@ -9,20 +9,20 @@ const config = {
 
 export async function signInUser(dispatch, registerPayload) {
     let body = JSON.stringify(registerPayload);
-    let data;
+    let userData;
     try {
         dispatch({ type: "REGISTER" });
         await axios.post(endpoint + "/user", body, config).then((res) => {
-            data = res.data;
+            userData = res.data;
         });
 
-        if (data) {
-            dispatch({ type: "REGISTER_SUCCESS", payload: data });
-            localStorage.setItem("currentUser", JSON.stringify(data));
-            return data;
+        if (userData) {
+            dispatch({ type: "REGISTER_SUCCESS", payload: userData });
+            localStorage.setItem("currentUser", JSON.stringify(userData));
+            return userData;
         }
 
-        dispatch({ type: "LOGIN_ERROR", error: data.errors[0] });
+        dispatch({ type: "LOGIN_ERROR", error: userData.errors[0] });
         return;
     } catch (error) {
         dispatch({ type: "LOGIN_ERROR", error: error });
@@ -37,20 +37,20 @@ export async function loginUser(dispatch, loginPayload) {
     };
     let body = JSON.stringify(loginPayload);
     console.log(body);
-    let data;
+    let userData;
     try {
         dispatch({ type: "REQUEST_LOGIN" });
         await axios.post(endpoint + "/login", body, config).then((res) => {
-            data = res.data;
+            userData = res.data;
         });
-        //let data = await response.then(res => res.json());
-        if (data) {
-            dispatch({ type: "LOGIN_SUCCESS", payload: data });
-            localStorage.setItem("currentUser", JSON.stringify(data));
-            return data;
+        //let userData = await response.then(res => res.json());
+        if (userData) {
+            dispatch({ type: "LOGIN_SUCCESS", payload: userData });
+            localStorage.setItem("currentUser", JSON.stringify(userData));
+            return userData;
         }
 
-        dispatch({ type: "LOGIN_ERROR", error: data.errors[0] });
+        dispatch({ type: "LOGIN_ERROR", error: userData.errors[0] });
         return;
     } catch (error) {
         dispatch({ type: "LOGIN_ERROR", error: error });
@@ -63,9 +63,11 @@ export async function logout(dispatch) {
     localStorage.removeItem("token");
 }
 
-export async function like(dispatch, countryPayload) {
-    let data = countryPayload;
-    dispatch({ type: "LIKE", payload: data });
-    localStorage.setItem("country", JSON.stringify(data));
-    return data
+export async function like(dispatch, payload) {
+    dispatch({ type: "LIKE", payload: payload });
+    let user = JSON.parse(localStorage.getItem("currentUser"))
+    user['list'] = payload
+    let updatedUser = user
+    console.log(updatedUser)
+    localStorage.setItem("currentUser", JSON.stringify(updatedUser));
 }

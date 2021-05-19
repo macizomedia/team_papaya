@@ -26,6 +26,7 @@ export default function index() {
     useEffect(() => {
         fetchData();
     }, []);
+
     return (
         <div className="input-control">
             <input
@@ -37,24 +38,43 @@ export default function index() {
             />
 
             <div className="grid grid-cols-2 grid-gap-2">
-                {input ? (countryList.map(item => (
-                    /* MAP COUNTRY COMPONENT */
-                    <div className="card" key={item.name}>
-                        <div className="card__container">
-                            <div className="card__image" style={{
-                                backgroundImage: `url("https://picsum.photos/id/${(Math.floor(Math.random()* 1000) + 13)}/600/400")`
-                            }}></div>
-                            <div className="card__title-container">
-                                <p className="title">{item.name}</p><span className="subtitle">{item.capital}</span></div>
-                        </div>
-                        <div className="content">
-                            <div className="divider"></div>
-                            <p>{item.region}</p>
-                            <p>{item.population}</p>
-                            <a href={`country/${item.alpha2Code.toLowerCase()}`}>{item.name}</a>
-                        </div>
-                    </div>
-                ))) : (null)}
+                {input
+                    ? countryList.map((item) => (
+                          /* MAP COUNTRY COMPONENT */
+                          <div className="card" key={item.name}>
+                              <div className="card__container">
+                                  <a
+                                      href={`country/${item.alpha2Code.toLowerCase()}`}
+                                  >
+                                      <div
+                                          className="card__image"
+                                          style={{
+                                              backgroundImage: `url("https://picsum.photos/id/${Math.floor(
+                                                  Math.random() * 1000
+                                              ) + 13}/600/400")`,
+                                          }}
+                                      ></div>
+                                      <div className="card__title-container">
+                                          <p className="title">{item.name}</p>
+                                          <span className="subtitle">
+                                              {item.capital}
+                                          </span>
+                                      </div>
+                                  </a>
+                              </div>
+                              <div className="content">
+                                  <div className="divider"></div>
+                                  <a
+                                      href={`country/${item.alpha2Code.toLowerCase()}`}
+                                  >
+                                      {item.name}
+                                  </a>
+                                  <p>{item.region}</p>
+                                  {/* <p>{item.population}</p> */}
+                              </div>
+                          </div>
+                      ))
+                    : null}
             </div>
         </div>
     );

@@ -22,7 +22,7 @@ export function useCountryDispatch() {
     return context;
 }
 
-export function CountryProvider ({ children }) {
+export function CountryProvider({ children }) {
     const [currentUser, dispatch] = useReducer(CountryReducer, initialState);
 
     return (
@@ -32,4 +32,4 @@ export function CountryProvider ({ children }) {
             </CountryDispatchContext.Provider>
         </CountryContext.Provider>
     );
-};
+}

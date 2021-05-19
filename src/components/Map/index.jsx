@@ -9,7 +9,7 @@ const Map = () => {
     };
 
     return (
-        <div className="map ">
+        <div className="map card">
             <h2 className="subtitle">Countries you have visited</h2>
             <p>
                 {" "}

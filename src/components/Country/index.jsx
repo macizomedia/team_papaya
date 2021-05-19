@@ -58,7 +58,7 @@ export default function index() {
 
     const addDreamList = async (e) => {
         let list = currentUser.list
-        let payload = [...list, {name: country.name, image: photos[2].urls.small}]
+        let payload = [...list, { name: country.name, image: photos[2].urls.small }]
 
         e.preventDefault();
         try {
@@ -200,15 +200,18 @@ export default function index() {
                 </div>
             ) : null}
             <div class="placeholder">
-                <div class="placeholder-icon"><span class="icon"><i class="fa fa-wrapper fa-coffee x-large"></i></span></div>
-                <h6 class="placeholder-title">The sever is currently taking a nap.</h6>
+                <div class="placeholder-icon"><span class="icon"><i class="fa fa-wrapper fa-atlas x-large"></i></span></div>
+                <h6 class="placeholder-title">Keep Adding Places</h6>
                 <div class="placeholder-subtitle">Come back in a few hours or press the refresh button.</div>
                 <div class="placeholder-commands u-center">
                     <div class="m-1">
-                        <button class="btn-primary">Refresh</button>
+                        <button class="btn-primary">Random</button>
                     </div>
                     <div class="m-1">
-                        <button>Home</button>
+                        <a href="/">
+
+                            <button>Back to Explorer</button>
+                        </a>
                     </div>
                 </div>
             </div>

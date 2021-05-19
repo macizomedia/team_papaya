@@ -35,11 +35,7 @@ export default function index() {
             .getPhotos({
                 query: name,
                 page: 1,
-<<<<<<< HEAD
-                perPage: 6,
-=======
                 perPage: 9,
->>>>>>> 07e2efcca7bce032fb248c6ab296fa9c82c84ef8
             })
             .then((data) => {
                 console.log(data.response.results);

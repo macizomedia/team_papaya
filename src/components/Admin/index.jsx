@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { fetchData, fetchImages } from "../../api";
-import { Link, Router } from "react-router-dom";
+import { Router } from "react-router-dom";
 import { useAuthState } from "../../store/index";
 import { switchMap, map } from "rxjs/operators";
 

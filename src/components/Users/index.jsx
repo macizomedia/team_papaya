@@ -9,7 +9,7 @@ createAvatar(style, {
 export default function index({ avatar, user, list }) {
     return (
         <>
-            <div className="dashboard">
+            <div className="dashboard card">
                 <h3 className="display uppercase">Welcome {user}</h3>
                 <div className="frame">
                     <div className="frame__header u-text-center">

@@ -65,9 +65,8 @@ export default function index() {
         }
     };
 
-    console.log(Math.floor(Math.random() * 10));
     return (
-        <div >
+        <div>
             {country ? (
                 <div>
                     <h1>{country.name}</h1>
@@ -77,7 +76,7 @@ export default function index() {
                         className="u-round"
                     />
 
-                    {/* Card */}
+                    {/* ##### Card ###### */}
                     <div
                         className="card my-4 u-center"
                         style={{ maxWidth: "350px" }}
@@ -92,32 +91,34 @@ export default function index() {
                                 }}
                             ></div>
 
-                            <div className="card__title-container">
-                                {/* {country.map((item) => (
-                                <p className="title"> {item}</p>
-                            ))} */}
-                                {/* <p className="title">{country.name}</p>
-                                <span className="subtitle">
-                                    {country.subregion}
-                                </span> */}
-                            </div>
+                            <div className="card__title-container"></div>
                         </div>
                         <div className="content">
                             <p>
+                                <b>Continent: </b>
+                                {country.subregion}
+                            </p>
+                            <p>
                                 {" "}
-                                <b>Capital:</b>
+                                <b>Capital: </b>
                                 {country.capital}
                             </p>
                             <p>
                                 {" "}
-                                <b>Population:</b>
+                                <b>Population: </b>
                                 {country.population}
                             </p>
-                            <p>Area: {country.area}km²</p>
+                            <p>
+                                {" "}
+                                <b>Area: </b>
+                                {country.area}km²
+                            </p>
 
-                            <p>Language: {country.languages[0].name}</p>
-                        </div>
-                        <div className="card__action-bar u-center">
+                            <p>
+                                {" "}
+                                <b>Language: </b>
+                                {country.languages[0].name}
+                            </p>
                             <button
                                 onClick={addDreamList}
                                 className="btn-link outline animated bounceIn"
@@ -131,19 +132,15 @@ export default function index() {
                                 Add to my dream trip list
                             </button>
                         </div>
-                        <div className="card__footer">
-                            <div className="u-text-center">
-                                <span>This is additional footer text in</span>
-                            </div>
-                        </div>
                     </div>
 
+                    {/* ##### Photos ###### */}
                     <div className="row">
-                        <div className="col-lg-6">
+                        <div className="col-lg-6 ">
                             <img
                                 src={photos ? photos[1].urls.full : null}
                                 alt=""
-                                className="u-round"
+                                className="u-round animated fadeIn"
                             />
                         </div>
                         <div className="col-lg-6">
@@ -201,22 +198,3 @@ export default function index() {
         </div>
     );
 }
-
-/*
-<div key={photo.description}>
-                                      <img src={photo.urls.full} alt="" />
-                                  </div>
-
-<figure class="fig">
-                            <img src="img/yosemite-falls.png" />
-                            <figcaption className="fig-caption u-text-center">
-                                Yosemite Valley, United States
-                            </figcaption>
-                        </figure>
-                        
-*/
-
-/* 
-                        <code>{JSON.stringify(country, null, 4)}</code>
-
-*/

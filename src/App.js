@@ -9,7 +9,6 @@ import "./App.css";
 import * as style from "@dicebear/micah";
 import { CountryProvider } from "./store/CountryProvider";
 
-
 function App() {
     return (
         <AuthProvider>
@@ -27,9 +26,7 @@ function App() {
                                     isPrivate={route.isPrivate}
                                 />
                             ))}
-                            
                         </Switch>
-                        
                     </Router>
                 </main>
                 <Footer />

@@ -2,7 +2,7 @@ import React from "react";
 import { useReducer } from "react";
 import { CountryReducer, initialState } from "./reducer";
 
-let list = initialState.list
+let list = initialState.list;
 
 export const CountryContext = React.createContext();
 export const CountryDispatchContext = React.createContext();

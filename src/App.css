@@ -11,6 +11,7 @@ main {
   min-height: 100vh;
   padding: 72px 0;
   text-align: center;
+  
 }
 h1 {
   font-size: 45px;
@@ -22,14 +23,15 @@ p {
   font-size: 16px;
 }
 a {
-  border-bottom: 1px solid white;
-  color: #0076ff;
+  
+  
   cursor: pointer;
   text-decoration: none;
   transition: all 0.2s ease;
 }
 a:hover {
-  border-bottom: 1px solid #0076ff;
+
+  text-decoration: none;
 }
 code,
 pre {
@@ -41,4 +43,19 @@ pre {
 code:before,
 code:after {
   content: '\`';
+}
+.my-node-enter {
+  opacity: 0;
+  z-index: 1;
+}
+.my-node-enter-active {
+  opacity: 1;
+  transition: opacity 1000ms;
+}
+.my-node-exit {
+  opacity: 1;
+}
+.my-node-exit-active {
+  opacity: 0;
+  transition: opacity 1000ms;
 }

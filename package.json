@@ -3,16 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@dicebear/avatars": "^4.6.4",
+    "@dicebear/micah": "^4.6.4",
     "@react-firebase/auth": "^0.2.10",
     "axios": "^0.21.1",
+    "country-list": "^2.2.0",
     "dotenv": "^9.0.2",
     "firebase": "^8.6.1",
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
+    "react-jvectormap": "^0.0.16",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "2.1.1",
+    "react-transition-group": "^4.4.1",
     "rxjs": "^7.0.1",
+    "unsplash-js": "^7.0.11",
     "username-generator": "^1.1.0"
   },
   "scripts": {

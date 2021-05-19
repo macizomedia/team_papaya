@@ -1,8 +1,15 @@
 import React from "react";
-import { useAuthState } from "../../store/index";
+import { logout, useAuthState, useAuthDispatch } from "../../store/index";
 
-export default function index() {
+export default function index({ history }) {
+
   const { currentUser } = useAuthState();
+  const dispatch = useAuthDispatch();
+  const handleLogout = () => {
+    console.log("LOGIN-OUT");
+    logout(dispatch);
+    history.push("/");
+  };
   return (
     <div className="header header-fixed unselectable header-animated">
       <div className="header-brand">
@@ -10,37 +17,31 @@ export default function index() {
           <h6 className="title">{currentUser.user !== "" ? currentUser.user : "guest"}</h6>
         </div>
         <div className="nav-item nav-btn" id="header-btn">
-          <span></span> <span></span> <span></span>{" "}
+          <span></span> <span></span> <span></span>
         </div>
       </div>
       <div className="header-nav" id="header-menu">
         <div className="nav-left">
           <div className="nav-item text-center">
-            {" "}
-            <a href="#">
-              {" "}
+            <a href="https://github.com/macizomedia/team_papaya">
               <span className="icon">
-                {" "}
                 <i
-                  className="fab fa-wrapper fa-twitter"
+                  className="fas fa-wrapper fa-code-branch"
                   aria-hidden="true"
-                ></i>{" "}
-              </span>{" "}
-            </a>{" "}
+                ></i>
+              </span>
+            </a>
           </div>
         </div>
         <div className="nav-right">
           <div className="nav-item has-sub toggle-hover" id="dropdown">
-            <a className="nav-dropdown-link">Menu</a>
+            {!currentUser.token ? (<a href="/login"><i class="fas fa-sign-in-alt"></i></a>) : (<a href="#dropdown" className="nav-dropdown-link">Menu</a>)}
             <ul className="dropdown-menu dropdown-animated" role="menu">
-              <li role="menu-item">
-                <a href="/login">LogIn</a>
+              <li>
+                {!currentUser.token ? (<a href="/signup">SignUp</a>) : (<a onClick={handleLogout} href="/">Logout</a>)}
               </li>
-              <li role="menu-item">
-                <a href="/signup">SignUp</a>
-              </li>
-              <li role="menu-item">
-                <a href="/dashboard">My Dashboard</a>
+              <li>
+                {!currentUser.token ? (<a href="/about">About</a>) : (<a href="/dashboard">My Dashboard</a>)}
               </li>
             </ul>
           </div>

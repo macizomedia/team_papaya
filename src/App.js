@@ -11,12 +11,11 @@ function App() {
   return (
     <AuthProvider>
       <Navigation />
-      <main>
         <br />
         <Router>
           <Switch>
             {routes.map((route) => (
-              <AppRoute
+              <AppRoute 
                 key={route.path}
                 path={route.path}
                 component={route.component}
@@ -25,9 +24,8 @@ function App() {
             ))}
           </Switch>
         </Router>
-      </main>
       <Footer />
-    </AuthProvider>
+    </AuthProvider >
   );
 }
 

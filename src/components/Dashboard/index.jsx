@@ -11,7 +11,7 @@ function Dashboard({ history }) {
     // const liStyle = { color: "red", fontSize: "23px" };
 
     return (
-        <div className="dashboard">
+        <div>
             <Users
                 avatar={currentUser.avatar}
                 user={currentUser.user}
@@ -20,17 +20,35 @@ function Dashboard({ history }) {
             <Map />
             <Articles />
             <div class="placeholder">
-                <div class="placeholder-icon"><span class="icon"><i class="fa fa-wrapper fa-map-marked-alt x-large"></i></span></div>
-                <h6 class="placeholder-title">Keep Exploring</h6>
+                <div class="placeholder-icon">
+                    <span class="icon">
+                        <i
+                            class="fa fa-wrapper fa-map-marked-alt x-large"
+                            style={{ color: "#d13a1c" }}
+                        ></i>
+                    </span>
+                </div>
+                <h6 class="placeholder-title" style={{ color: "#d13a1c" }}>
+                    Keep Exploring
+                </h6>
                 <div class="placeholder-commands u-center">
                     <div class="form-group">
                         <a href="/">
-                            <button class="btn-warning">Explore More</button>
+                            <button
+                                class="btn-light "
+                                style={{
+                                    color: "#d13a1c",
+                                    border: "solid #d13a1c 1px",
+                                }}
+                            >
+                                Explore More
+                            </button>
                         </a>
                     </div>
                 </div>
-                <div class="placeholder-subtitle">Find a new Destination</div>
-
+                <div class="placeholder-subtitle" style={{ color: "#d13a1c" }}>
+                    Find a new Destination
+                </div>
             </div>
         </div>
     );

@@ -2,14 +2,17 @@ import React from "react";
 
 export default function index() {
     return (
-        <div className="card">
+        <div
+            className="card"
+            style={{ backgroundColor: "rgba(241, 221, 183, 0.8)" }}
+        >
             <figure className="fig">
                 <figcaption className="fig-caption u-text-center">
                     <a
                         className="ALink"
                         href="https://naturebridge.org/programs/yosemite-school-environmental-science?gclid=CjwKCAjwqIiFBhAHEiwANg9szpbkA0VHAFdh_6SAX8doHIMnFs_Zz48KCmA74x7qSDvvR4k24lf9ARoCs60QAvD_BwE"
                     >
-                        <h1 className="subtitle ">
+                        <h1 className="subtitle " style={{ color: "#E65F44" }}>
                             {" "}
                             <b>Yosemite National Park</b>
                         </h1>
@@ -29,7 +32,7 @@ export default function index() {
                         className="ALink"
                         href="https://www.germany.travel/en/home.html"
                     >
-                        <h1 className="subtitle ">
+                        <h1 className="subtitle " style={{ color: "#E65F44" }}>
                             {" "}
                             <b>Explore Germany</b>
                         </h1>
@@ -42,7 +45,7 @@ export default function index() {
                 </figcaption>
 
                 <figcaption className="fig-caption u-text-center">
-                    <h1 className="subtitle ">
+                    <h1 className="subtitle " style={{ color: "#E65F44" }}>
                         {" "}
                         <b>Safe Travel</b>
                     </h1>
@@ -65,7 +68,7 @@ export default function index() {
                         href="https://www.bucketlistly.blog/inspiration"
                     >
                         {" "}
-                        <h1 className="subtitle ">
+                        <h1 className="subtitle " style={{ color: "#E65F44" }}>
                             {" "}
                             <b>Blog</b>
                         </h1>

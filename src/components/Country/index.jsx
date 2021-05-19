@@ -15,14 +15,13 @@ const unsplash = createApi({
 });
 
 export default function index() {
-
-    const { currentUser } = useAuthState()
+    const { currentUser } = useAuthState();
     const dispatch = useCountryDispatch();
     const { currentList } = useCountryState();
     let { id } = useParams();
     let countryName;
 
-    console.log("from country" + JSON.stringify(currentList, null, 2))
+    console.log("from country" + JSON.stringify(currentList, null, 2));
 
     const [country, setCountry] = useState();
     const [photos, setPhotos] = useState();
@@ -49,7 +48,6 @@ export default function index() {
             });
     };
     useEffect(() => {
-
         fetchData();
         setTimeout(() => {
             fetchImages(countryName);
@@ -57,8 +55,11 @@ export default function index() {
     }, [id]);
 
     const addDreamList = async (e) => {
-        let list = currentUser.list
-        let payload = [...list, { name: country.name, image: photos[2].urls.small }]
+        let list = currentUser.list;
+        let payload = [
+            ...list,
+            { name: country.name, image: photos[2].urls.small },
+        ];
 
         e.preventDefault();
         try {
@@ -126,10 +127,15 @@ export default function index() {
                             <button
                                 onClick={addDreamList}
                                 className="btn-link outline animated bounceIn"
+                                style={{
+                                    color: "#d13a1c",
+                                    border: "solid #d13a1c 1px",
+                                }}
                             >
                                 <span class="icon">
                                     <i
                                         className="fa fa-wrapper fa-heart animated pulse"
+                                        style={{ color: "#d13a1c" }}
                                         aria-hidden="true"
                                     ></i>
                                 </span>
@@ -200,18 +206,41 @@ export default function index() {
                 </div>
             ) : null}
             <div class="placeholder">
-                <div class="placeholder-icon"><span class="icon"><i class="fa fa-wrapper fa-atlas x-large"></i></span></div>
-                <h6 class="placeholder-title">Keep Adding Places</h6>
-                <div class="placeholder-subtitle">Come back in a few hours or press the refresh button.</div>
+                <div class="placeholder-icon">
+                    <span class="icon">
+                        <i
+                            class="fa fa-wrapper fa-atlas x-larger"
+                            style={{ color: "#d13a1c" }}
+                        ></i>
+                    </span>
+                </div>
+                <h6 class="placeholder-title" style={{ color: "#d13a1c" }}>
+                    Keep Adding Places
+                </h6>
+                <div class="placeholder-subtitle" style={{ color: "#d13a1c" }}>
+                    Come back in a few hours or press the refresh button.
+                </div>
                 <div class="placeholder-commands u-center">
                     <div class="m-1">
-                        <button class="btn-primary">Random</button>
+                        <button
+                            class="btn"
+                            style={{
+                                color: "#E65F44",
+                                border: "solid #d13a1c 1px",
+                            }}
+                        >
+                            Random
+                        </button>
                     </div>
                     <div class="m-1">
-                        <a href="/">
-
-                            <button>Back to Explorer</button>
-                        </a>
+                        <button
+                            style={{
+                                color: "#E65F44",
+                                border: "solid #d13a1c 1px",
+                            }}
+                        >
+                            <a href="/">Back to Explorer </a>
+                        </button>
                     </div>
                 </div>
             </div>

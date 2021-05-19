@@ -15,9 +15,10 @@ const SignUp = ({ history }) => {
             Name: username,
             Email: email.value,
             Password: password.value,
-            Avatar: `https://avatars.dicebear.com/api/${gender.value === "male" ? "male" : "female"
-                }/`,
-            List: []
+            Avatar: `https://avatars.dicebear.com/api/${
+                gender.value === "male" ? "male" : "female"
+            }/`,
+            List: [],
         };
         return user;
     };
@@ -38,8 +39,7 @@ const SignUp = ({ history }) => {
     );
 
     return (
-        <div className="content">
-
+        <div className="content card">
             <form className="frame p-3" onSubmit={handleSigning}>
                 <div className="frame__body p-2">
                     <div className="row p-3 level fill-height">
@@ -141,16 +141,20 @@ const SignUp = ({ history }) => {
                                         </div>
                                     </div>
                                 </div>
-                                <div
-                                    name="register"
-                                ><button className="outline btn-dark" type="submit">Register</button></div>
-
+                                <div>
+                                    <button
+                                        name="register"
+                                        className="outline btn-dark"
+                                        type="submit"
+                                    >
+                                        Register
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </form>
-
         </div>
     );
 };

@@ -1,9 +1,7 @@
-import { useAuthDispatch, logout, useAuthState } from "../../store/index";
+import { useAuthState } from "../../store/index";
 import "./Dashboard.css";
-
 import Map from "../Map";
-import React, { useEffect, useState } from "react";
-import { VectorMap } from "react-jvectormap";
+import React from "react";
 import Users from "../Users";
 import Articles from "../Articles";
 

@@ -133,7 +133,7 @@ func setupResponse(w *http.ResponseWriter, req *http.Request) {
 	(*w).Header().Set("Access-Control-Allow-Headers", "Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization")
 }
 func login(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("Login Hited")
+	fmt.Println("Login Histed")
 	w.Header().Set("Content-Type", "application/json")
 	setupResponse(&w, r)
 	session, _ := store.Get(r, "cookie-name")

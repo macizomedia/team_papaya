@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { fetchData, fetchImages } from "../../api";
-import { Link, Router } from "react-router-dom";
+import { Router } from "react-router-dom";
 import { useAuthState } from "../../store/index";
 import { switchMap, map } from "rxjs/operators";
 
@@ -21,6 +21,7 @@ const currencies$ = data$.pipe(
 );
 
 /* Definition of type of data with switchMap (fetching image from other source) */
+// eslint-disable-next-line
 const photos$ = data$.pipe(
     map((data) =>
         data.map((data) => data.name.toLowerCase())
@@ -58,30 +59,34 @@ const useObservable = (observable, setFunc) => {
 /* Component */
 
 const Home = ({ history }) => {
-  const { currentUser } = useAuthState()
-  const [currencies, setCurrencies] = useState([])
-  const [photos, setPhotos] = useState()
-  /* THIRD Use useObservable hook to set data to component state */
-  /* Using Custom Hooks to consume data a feed the state */
-  useObservable(photosArr$, setPhotos)
-  useObservable(currencies$, setCurrencies)
+    const { currentUser } = useAuthState();
+    const [currencies, setCurrencies] = useState([]);
+    const [photos, setPhotos] = useState();
+    /* THIRD Use useObservable hook to set data to component state */
+    /* Using Custom Hooks to consume data a feed the state */
+    useObservable(photosArr$, setPhotos);
+    useObservable(currencies$, setCurrencies);
 
     return (
         <>
             <h1>ADMIN</h1>
             {/* {photos ? (photos.map(unit => (<img key={unit.raw} src={unit.full}></img>))
       ) :(null)} */}
-      {photos ? (
-        photos.map(photo =>
-          (<img key={photo.id} src={photo.urls.full} alt={photos.alt_description}></img>)
-        )
-      ) : (null)}
-      <Router history={history}>
-        <p>Currently logged as {currentUser.user}</p>
-        {/* USE pre tag and JSON.Stringify to Understand data structure */}
-        <pre>{JSON.stringify(currencies, null, 4)}</pre>
-      </Router>
-    </>
-  );
+            {photos
+                ? photos.map((photo) => (
+                      <img
+                          key={photo.id}
+                          src={photo.urls.full}
+                          alt={photos.alt_description}
+                      ></img>
+                  ))
+                : null}
+            <Router history={history}>
+                <p>Currently logged as {currentUser.user}</p>
+                {/* USE pre tag and JSON.Stringify to Understand data structure */}
+                <pre>{JSON.stringify(currencies, null, 4)}</pre>
+            </Router>
+        </>
+    );
 };
 export default Home;

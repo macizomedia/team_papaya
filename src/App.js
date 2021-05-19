@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch } from "react-router-dom";
 import routes from "./config/routes.js";
 import AppRoute from "./components/AppRoute.js";
 import "./App.css";
+import * as style from "@dicebear/micah";
 import { CountryProvider } from "./store/CountryProvider";
 
 function App() {

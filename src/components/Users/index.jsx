@@ -1,8 +1,12 @@
 
 
 import React from 'react'
-import  Admin from '../Admin'
+import { createAvatar } from "@dicebear/avatars";
+import * as style from "@dicebear/micah";
 
+createAvatar(style, {
+  seed: 'custom-seed',
+});
 
 
 export default function index({avatar, user}) {
@@ -15,7 +19,7 @@ export default function index({avatar, user}) {
                 <div className="frame__header u-text-center">
                     <div>
                         <figure className="avatar avatar--xlarge">
-                            <img alt="avatar" src={avatar} />
+                            <img alt="avatar" src={`${avatar}/:seed.svg`} />
                         </figure>
 
                     </div>

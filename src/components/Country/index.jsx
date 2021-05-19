@@ -65,7 +65,6 @@ export default function index() {
         }
     };
 
-    console.log(Math.floor(Math.random() * 10));
     return (
         <div>
             {country ? (
@@ -120,8 +119,6 @@ export default function index() {
                                 <b>Language: </b>
                                 {country.languages[0].name}
                             </p>
-                        </div>
-                        <div className="card__action-bar u-center">
                             <button
                                 onClick={addDreamList}
                                 className="btn-link outline animated bounceIn"
@@ -135,20 +132,15 @@ export default function index() {
                                 Add to my dream trip list
                             </button>
                         </div>
-                        <div className="card__footer">
-                            <div className="u-text-center">
-                                <span>This is additional footer text in</span>
-                            </div>
-                        </div>
                     </div>
 
                     {/* ##### Photos ###### */}
                     <div className="row">
-                        <div className="col-lg-6">
+                        <div className="col-lg-6 ">
                             <img
                                 src={photos ? photos[1].urls.full : null}
                                 alt=""
-                                className="u-round"
+                                className="u-round animated fadeIn"
                             />
                         </div>
                         <div className="col-lg-6">

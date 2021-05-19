@@ -1,4 +1,4 @@
-import React, { createContext } from "react";
+import React from "react";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import { AuthProvider } from "./store/Auth";
@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Switch } from "react-router-dom";
 import routes from "./config/routes.js";
 import AppRoute from "./components/AppRoute.js";
 import "./App.css";
-import { CountryProvider } from "./store/CountryCtx";
+import { CountryProvider } from "./store/CountryProvider";
 
 function App() {
     return (

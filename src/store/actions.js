@@ -8,6 +8,7 @@ const config = {
 };
 
 export async function signInUser(dispatch, registerPayload) {
+
     let body = JSON.stringify(registerPayload);
     let userData;
     try {
@@ -30,20 +31,14 @@ export async function signInUser(dispatch, registerPayload) {
 }
 
 export async function loginUser(dispatch, loginPayload) {
-    const config = {
-        headers: {
-            "Content-type": "application/json; charset=UTF-8",
-        },
-    };
+    
     let body = JSON.stringify(loginPayload);
-    console.log(body);
     let userData;
     try {
         dispatch({ type: "REQUEST_LOGIN" });
         await axios.post(endpoint + "/login", body, config).then((res) => {
             userData = res.data;
         });
-        //let userData = await response.then(res => res.json());
         if (userData) {
             dispatch({ type: "LOGIN_SUCCESS", payload: userData });
             localStorage.setItem("currentUser", JSON.stringify(userData));
@@ -64,6 +59,14 @@ export async function logout(dispatch) {
 }
 
 export async function like(dispatch, payload) {
+    /* let body = JSON.stringify(payload)
+    let userData;
+    try {
+        dispatch({type: "SAVE"});
+        await axios.post(endpoint + "/user", body, config).then(res => console.log(res.data))
+    }catch (err) {
+        console.log(err)
+    } */
     dispatch({ type: "LIKE", payload: payload });
     let user = JSON.parse(localStorage.getItem("currentUser"))
     user['list'] = payload

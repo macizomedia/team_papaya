@@ -1,10 +1,9 @@
 import UsernameGenarator from "username-generator";
-import React, { useCallback, useState } from "react";
+import React, { useCallback } from "react";
 import { withRouter } from "react-router";
 import { signInUser, useAuthDispatch } from "../store";
 
 const SignUp = ({ history }) => {
-    const [inProp, setInProp] = useState(false);
     const dispatch = useAuthDispatch();
     const createUser = (name, email, password, gender) => {
         var username =
@@ -15,9 +14,8 @@ const SignUp = ({ history }) => {
             Name: username,
             Email: email.value,
             Password: password.value,
-            Avatar: `https://avatars.dicebear.com/api/${
-                gender.value === "male" ? "male" : "female"
-            }/`,
+            Avatar: `https://avatars.dicebear.com/api/${gender.value === "male" ? "male" : "female"
+                }/`,
             List: [],
         };
         return user;

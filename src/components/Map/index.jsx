@@ -1,4 +1,3 @@
-import { getCode } from "country-list";
 import React from "react";
 import { VectorMap } from "react-jvectormap";
 
@@ -30,7 +29,6 @@ const Map = () => {
                     height: "520px",
                 }}
                 onRegionClick={handleClick}
-                onRegionTipShow={(e) => getCode()}
                 containerClassName="map"
                 regionStyle={{
                     initial: {

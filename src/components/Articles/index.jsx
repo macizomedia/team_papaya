@@ -22,6 +22,7 @@ export default function index() {
                         </p>
                     </a>
                     <img
+                        alt="yosemite park"
                         className="img-container"
                         src="https://images.canusa.de/img/regionen/usa/suedwesten/kalifornien/yosemite-national-park/yosemite-nationalpark-lake-view-landscape.cr2500x1093-0x39.jpg"
                     ></img>
@@ -41,7 +42,7 @@ export default function index() {
                             <i className="subtitle">(click to see more)</i>
                         </p>
                     </a>
-                    <img src="https://cdn.cnn.com/cnnnext/dam/assets/170706112840-germany.jpg" />
+                    <img alt="germany arial" src="https://cdn.cnn.com/cnnnext/dam/assets/170706112840-germany.jpg" />
                 </figcaption>
 
                 <figcaption className="fig-caption u-text-center">

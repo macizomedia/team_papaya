@@ -1,7 +1,8 @@
 import React from "react";
 import { VectorMap } from "react-jvectormap";
 
-
+/* This component was mostly reconfigured - not make changes until we have final understanding */
+/* This was mostly reconfigured - not make changes until we have final understanding */
 const mapData = {
   CN: 100000,
   IN: 9900,

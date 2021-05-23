@@ -16,7 +16,6 @@ export default function index() {
                 console.log(data);
                 }
             });
-
     };
 
     const updateInput = async (input) => {
@@ -60,7 +59,6 @@ export default function index() {
                                                   Math.random() * 1000
                                               ) + 13}/600/400")`,
                                           }}
-                                          /* style={photos ? photos.map(photo => photo[1].urls.full) : null} */
                                       ></div>
                                       <div className="card__title-container">
                                           <p className="title">{item.name}</p>
@@ -78,7 +76,6 @@ export default function index() {
                                       {item.name}
                                   </a>
                                   <p>{item.region}</p>
-                                  {/* <p>{item.population}</p> */}
                               </div>
                           </div>
                       ))

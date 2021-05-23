@@ -36,9 +36,11 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@babel/preset-typescript": "^7.13.0",
     "@types/react": "^17.0.5",
     "@types/react-router": "^5.1.14",
-    "firebase-admin": "^9.8.0"
+    "firebase-admin": "^9.8.0",
+    "typescript": "^4.2.4"
   },
   "react-dotenv": {
     "whitelist": [

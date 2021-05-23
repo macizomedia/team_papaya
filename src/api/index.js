@@ -13,6 +13,7 @@ export function fetchData(url) {
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
+       
         observer.next(data);
         observer.complete();
       })
@@ -27,7 +28,7 @@ export const fetchImages = (name) => {
     unsplash.search.getPhotos({
       query: name,
       page: 1,
-      perPage: 6,
+      perPage: 9,
     }).then(data => {
       observer.next(data.response.results);
       observer.complete();

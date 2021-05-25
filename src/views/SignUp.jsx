@@ -3,8 +3,18 @@ import React, { useCallback } from "react";
 import { withRouter } from "react-router";
 import { signInUser, useAuthDispatch } from "../store";
 
+/* Here we need to add more validation if possible as well as the option to make an account
+with facebook and gmail those are options that can be implemented with firebase after I am done
+with the server I will like to do that. So for the moment we can be adding those buttons (fb, gmail, etc...)  */
+
 const SignUp = ({ history }) => {
     const dispatch = useAuthDispatch();
+
+    /* This part is to study as we are creating the user on the client
+    Normally this is something that can be done on the server, but for now
+    is useful to have it here so you can also add new elements and try then 
+    across the app, later we can also add it on the server side */
+
     const createUser = (name, email, password, gender) => {
         var username =
             name.value === ""
@@ -20,6 +30,7 @@ const SignUp = ({ history }) => {
         };
         return user;
     };
+    // useCallback is a react hook | we gonna use it more take it on account!
     const handleSigning = useCallback(
         async (event) => {
             event.preventDefault();
@@ -140,6 +151,7 @@ const SignUp = ({ history }) => {
                                     </div>
                                 </div>
                                 <div>
+                                    {/* Add already have an account */}
                                     <button
                                         name="register"
                                         className="outline btn-dark"

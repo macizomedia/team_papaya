@@ -35,7 +35,7 @@ function Login({ history }) {
         <form className="frame p-3">
           <div className="card__container">
             <div className="card__header">
-              <p>Welcome again</p>
+              <p className="lead">Papaya - just easy search... </p>
             </div>
             <div className="card__content mt-3">
 
@@ -69,9 +69,7 @@ function Login({ history }) {
               </div>
             </div>
           </div>
-          // TODO 
-          {/* Add forgot password */}
-          {/* Add Already have an account option*/}
+          {/* Add forgot password option */}
           <button onClick={handleLogin} disabled={currentUser.loading}>
             login
           </button>

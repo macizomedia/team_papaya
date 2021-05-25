@@ -72,8 +72,13 @@ export async function like(dispatch, payload) {
     } */
   dispatch({ type: "LIKE", payload: payload });
   let user = JSON.parse(localStorage.getItem("currentUser"));
-  user["list"] = payload;
+  user["list"] = payload; // this way we Update only the list property of currentUser on localStorage
   let updatedUser = user;
-  console.log(updatedUser);
+  //console.log(updatedUser);
   localStorage.setItem("currentUser", JSON.stringify(updatedUser));
+}
+
+export async function remove(dispatch, payload) {
+  dispatch({ type: "REMOVE", /* payload: payload.id? */})
+  // Remember to update local storage
 }

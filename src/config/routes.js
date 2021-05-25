@@ -5,6 +5,8 @@ import Home from "../views/Home";
 import Dashboard from "../components/Dashboard";
 import Country from "../components/Country";
 
+/* We need to create a 404 to catch invalid routes */
+
 const routes = [
     {
         path: "/login",

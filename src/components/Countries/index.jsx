@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 export default function index() {
     const [input, setInput] = useState("");
+    const [fetchStatus, setFetchStatus] = useState(true)
     const [countryListDefault, setCountryListDefault] = useState();
     const [countryList, setCountryList] = useState();
 
@@ -9,9 +10,11 @@ export default function index() {
         return await fetch("https://restcountries.eu/rest/v2/all")
             .then((response) => response.json())
             .then((data) => {
+                if(fetchStatus){
                 setCountryList(data);
                 setCountryListDefault(data);
                 console.log(data);
+                }
             });
     };
 
@@ -25,6 +28,9 @@ export default function index() {
     };
     useEffect(() => {
         fetchData();
+        return () => {
+            setFetchStatus(false)
+        }
     }, []);
 
     return (
@@ -53,7 +59,6 @@ export default function index() {
                                                   Math.random() * 1000
                                               ) + 13}/600/400")`,
                                           }}
-                                          /* style={photos ? photos.map(photo => photo[1].urls.full) : null} */
                                       ></div>
                                       <div className="card__title-container">
                                           <p className="title">{item.name}</p>
@@ -71,7 +76,6 @@ export default function index() {
                                       {item.name}
                                   </a>
                                   <p>{item.region}</p>
-                                  {/* <p>{item.population}</p> */}
                               </div>
                           </div>
                       ))

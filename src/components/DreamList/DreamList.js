@@ -4,6 +4,7 @@ import { useCountryState } from "../../store/index";
 
 function DreamList() {
     const fakeArray = ["USA", "Germany", "Argentina"];
+    const context = useCountryState()
     const test = useContext(CountryContext);
     console.log(test);
     return (

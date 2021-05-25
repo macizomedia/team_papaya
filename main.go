@@ -9,12 +9,15 @@ import (
 	"net/http"
 	"os"
 	"reflect"
+	"time"
 
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 	"github.com/gorilla/sessions"
 	"github.com/joho/godotenv"
+	"golang.org/x/crypto/bcrypt"
 
+	"github.com/dgrijalva/jwt-go"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -22,6 +25,7 @@ import (
 )
 
 type User struct {
+	Id       uint      `json:"id"`
 	Name     string    `json:"name"`
 	Password string    `json:"password"`
 	Email    string    `json:"email"`
@@ -32,11 +36,24 @@ type User struct {
 type Country struct {
 	Name string `json:"name"`
 }
+
 type Article struct {
 	Id      string `json:"Id"`
 	Title   string `json:"Title"`
 	Desc    string `json:"desc"`
 	Content string `json:"content"`
+}
+
+type ErrorResponse struct {
+	StatusCode   int    `json:"status"`
+	ErrorMessage string `json:"message"`
+}
+
+type Token struct {
+	UserID uint
+	Name   string
+	Email  string
+	*jwt.StandardClaims
 }
 
 var Articles []Article
@@ -57,10 +74,6 @@ var cookieHandler = securecookie.New(
 	securecookie.GenerateRandomKey(64),
 	securecookie.GenerateRandomKey(32))
 */
-func init() {
-	loadTheEnv()
-	createDBInstance()
-}
 
 func loadTheEnv() {
 	err := godotenv.Load(".env")
@@ -69,6 +82,8 @@ func loadTheEnv() {
 		log.Fatalf("Error loading .env file")
 	}
 }
+
+/* CONNECTION TO MONGODB  */
 
 func createDBInstance() {
 	connectionString := os.Getenv("DB_URI")
@@ -92,14 +107,21 @@ func createDBInstance() {
 	fmt.Println("Collection instance created!")
 }
 
-// ErrorResponse : This is error model.
-type ErrorResponse struct {
-	StatusCode   int    `json:"status"`
-	ErrorMessage string `json:"message"`
+/* LOAD EVIROMENT VARIABLES & CALL MONGODB FUNCTION */
+
+func init() {
+	loadTheEnv()
+	createDBInstance()
 }
 
-// GetError : This is helper function to prepare error model.
-// If you want to export your function. You must to start upper case function name. Otherwise you won't see your function when you import that on other class.
+/* STAR MAIN ROUTER HANDLER  */
+
+func main() {
+	handleRequest()
+}
+
+/*  UTIL FUNTIONS TO HANDLE ERROR */
+
 func GetError(err error, w http.ResponseWriter) {
 
 	log.Fatal(err.Error())
@@ -112,9 +134,6 @@ func GetError(err error, w http.ResponseWriter) {
 
 	w.WriteHeader(response.StatusCode)
 	w.Write(message)
-}
-func main() {
-	handleRequest()
 }
 
 /* func setSession(userName string, response http.ResponseWriter) {
@@ -131,13 +150,21 @@ func main() {
 	}
 } */
 
+/* SET HEADERS UTILS  */
+
 func setupResponse(w *http.ResponseWriter, req *http.Request) {
 	(*w).Header().Set("Access-Control-Allow-Origin", "*")
 	(*w).Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
 	(*w).Header().Set("Access-Control-Allow-Headers", "Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization")
 }
+
+/* ***ROUTES*** */
+/* *********************************************************** */
+
+/* LOGIN */
+
 func login(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("Login Histed")
+	fmt.Println("Login route...")
 	w.Header().Set("Content-Type", "application/json")
 	setupResponse(&w, r)
 	session, _ := store.Get(r, "cookie-name")
@@ -146,20 +173,19 @@ func login(w http.ResponseWriter, r *http.Request) {
 	var user User
 	json.Unmarshal(reqBody, &user)
 
-	filter := bson.M{"email": user.Email}
-	err := collection.FindOne(context.TODO(), filter).Decode(&user)
+	fmt.Println(user.Email)
+	res := findOne(user.Email, user.Password)
 
-	if err != nil {
-		GetError(err, w)
-		return
-	}
-	fmt.Println(user)
+	fmt.Println(res)
 
-	json.NewEncoder(w).Encode(user)
+	json.NewEncoder(w).Encode(res)
 
 	session.Values["authenticated"] = true
 	session.Save(r, w)
 }
+
+/* LOGOUT (NOT IMPLEMANTED) */
+
 func logout(w http.ResponseWriter, r *http.Request) {
 	session, _ := store.Get(r, "cookie-name")
 
@@ -167,6 +193,7 @@ func logout(w http.ResponseWriter, r *http.Request) {
 	session.Values["authenticated"] = false
 	session.Save(r, w)
 }
+
 func allUsers(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("users hit")
 	w.Header().Set("Content-Type", "application/json")
@@ -174,6 +201,7 @@ func allUsers(w http.ResponseWriter, r *http.Request) {
 	payload := getAllUsers()
 	json.NewEncoder(w).Encode(payload)
 }
+
 func setUser(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("users post hitted")
 	w.Header().Set("Content-Type", "application/json")
@@ -186,6 +214,15 @@ func setUser(w http.ResponseWriter, r *http.Request) {
 	var user User
 	json.Unmarshal(reqBody, &user)
 
+	pass, err := bcrypt.GenerateFromPassword([]byte(user.Password), bcrypt.DefaultCost)
+	if err != nil {
+		fmt.Println(err)
+		err := ErrorResponse{
+			ErrorMessage: "Password Encryption  failed",
+		}
+		json.NewEncoder(w).Encode(err)
+	}
+	user.Password = string(pass)
 	res, err := collection.InsertOne(context.Background(), bson.M{"name": user.Name, "email": user.Email, "password": user.Password})
 	if err != nil {
 		return
@@ -193,6 +230,11 @@ func setUser(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(res.InsertedID)
 	json.NewEncoder(w).Encode(user)
 }
+
+func CreateUser(w http.ResponseWriter, r *http.Request) {
+
+}
+
 func getUser(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("getuser Route ")
 	w.Header().Set("Content-Type", "application/json")
@@ -218,6 +260,47 @@ func getUser(w http.ResponseWriter, r *http.Request) {
 // 	}
 
 // }
+
+func findOne(email, password string) map[string]interface{} {
+
+	var user User
+
+	filter := bson.M{"email": email}
+	err := collection.FindOne(context.TODO(), filter).Decode(&user)
+	if err != nil {
+		var resp = map[string]interface{}{"status": false, "message": "Email address not found"}
+		return resp
+
+	}
+	errf := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(password))
+	if errf != nil && errf == bcrypt.ErrMismatchedHashAndPassword {
+		var resp = map[string]interface{}{"status": false, "message": "Invalid login credentials. Please try again"}
+		return resp
+	}
+	expiresAt := time.Now().Add(time.Minute * 100000).Unix()
+
+	tk := &Token{
+		UserID: user.Id,
+		Name:   user.Name,
+		Email:  user.Email,
+		StandardClaims: &jwt.StandardClaims{
+			ExpiresAt: expiresAt,
+		},
+	}
+
+	token := jwt.NewWithClaims(jwt.GetSigningMethod("HS256"), tk)
+
+	tokenString, error := token.SignedString([]byte("secret"))
+	if error != nil {
+		fmt.Println(error)
+	}
+
+	fmt.Printf("Found a single document: %+v\n", user)
+	var resp = map[string]interface{}{"status": false, "message": "logged in"}
+	resp["token"] = tokenString
+	resp["user"] = user
+	return resp
+}
 
 func getUserId(vars string) []primitive.M {
 

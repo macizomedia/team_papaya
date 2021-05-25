@@ -25,7 +25,7 @@ import (
 )
 
 type User struct {
-	Id uint `json:"id"`
+	Id       uint      `json:"id"`
 	Name     string    `json:"name"`
 	Password string    `json:"password"`
 	Email    string    `json:"email"`
@@ -36,6 +36,7 @@ type User struct {
 type Country struct {
 	Name string `json:"name"`
 }
+
 type Article struct {
 	Id      string `json:"Id"`
 	Title   string `json:"Title"`
@@ -47,12 +48,14 @@ type ErrorResponse struct {
 	StatusCode   int    `json:"status"`
 	ErrorMessage string `json:"message"`
 }
+
 type Token struct {
 	UserID uint
 	Name   string
 	Email  string
 	*jwt.StandardClaims
 }
+
 var Articles []Article
 
 type Users []User
@@ -72,14 +75,15 @@ var cookieHandler = securecookie.New(
 	securecookie.GenerateRandomKey(32))
 */
 
-
 func loadTheEnv() {
 	err := godotenv.Load(".env")
-	
+
 	if err != nil {
 		log.Fatalf("Error loading .env file")
 	}
 }
+
+/* CONNECTION TO MONGODB  */
 
 func createDBInstance() {
 	connectionString := os.Getenv("DB_URI")
@@ -103,14 +107,20 @@ func createDBInstance() {
 	fmt.Println("Collection instance created!")
 }
 
+/* LOAD EVIROMENT VARIABLES & CALL MONGODB FUNCTION */
+
 func init() {
 	loadTheEnv()
 	createDBInstance()
 }
 
+/* STAR MAIN ROUTER HANDLER  */
+
 func main() {
 	handleRequest()
 }
+
+/*  UTIL FUNTIONS TO HANDLE ERROR */
 
 func GetError(err error, w http.ResponseWriter) {
 
@@ -140,11 +150,18 @@ func GetError(err error, w http.ResponseWriter) {
 	}
 } */
 
+/* SET HEADERS UTILS  */
+
 func setupResponse(w *http.ResponseWriter, req *http.Request) {
 	(*w).Header().Set("Access-Control-Allow-Origin", "*")
 	(*w).Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
 	(*w).Header().Set("Access-Control-Allow-Headers", "Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization")
 }
+
+/* ***ROUTES*** */
+/* *********************************************************** */
+
+/* LOGIN */
 
 func login(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Login route...")
@@ -157,23 +174,17 @@ func login(w http.ResponseWriter, r *http.Request) {
 	json.Unmarshal(reqBody, &user)
 
 	fmt.Println(user.Email)
-	res := findOne(user.Email,user.Password)
-	
+	res := findOne(user.Email, user.Password)
 
 	fmt.Println(res)
 
-	
-	json.NewEncoder(w).Encode(res) 
-	/* 
-	
-	filter := bson.M{"email": user.Email}
-	err := collection.FindOne(context.TODO(), filter).Decode(&user)
-	
-	*/
+	json.NewEncoder(w).Encode(res)
 
 	session.Values["authenticated"] = true
 	session.Save(r, w)
 }
+
+/* LOGOUT (NOT IMPLEMANTED) */
 
 func logout(w http.ResponseWriter, r *http.Request) {
 	session, _ := store.Get(r, "cookie-name")
@@ -207,7 +218,7 @@ func setUser(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		fmt.Println(err)
 		err := ErrorResponse{
-		ErrorMessage: "Password Encryption  failed",
+			ErrorMessage: "Password Encryption  failed",
 		}
 		json.NewEncoder(w).Encode(err)
 	}
@@ -219,6 +230,7 @@ func setUser(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(res.InsertedID)
 	json.NewEncoder(w).Encode(user)
 }
+
 func CreateUser(w http.ResponseWriter, r *http.Request) {
 
 }
@@ -255,13 +267,13 @@ func findOne(email, password string) map[string]interface{} {
 
 	filter := bson.M{"email": email}
 	err := collection.FindOne(context.TODO(), filter).Decode(&user)
-	 if err != nil {
+	if err != nil {
 		var resp = map[string]interface{}{"status": false, "message": "Email address not found"}
 		return resp
-      	
-	 }
-	 errf := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(password))
-	if errf != nil && errf == bcrypt.ErrMismatchedHashAndPassword { 
+
+	}
+	errf := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(password))
+	if errf != nil && errf == bcrypt.ErrMismatchedHashAndPassword {
 		var resp = map[string]interface{}{"status": false, "message": "Invalid login credentials. Please try again"}
 		return resp
 	}
@@ -283,15 +295,12 @@ func findOne(email, password string) map[string]interface{} {
 		fmt.Println(error)
 	}
 
-
-	  fmt.Printf("Found a single document: %+v\n", user)
-	  var resp = map[string]interface{}{"status": false, "message": "logged in"}
+	fmt.Printf("Found a single document: %+v\n", user)
+	var resp = map[string]interface{}{"status": false, "message": "logged in"}
 	resp["token"] = tokenString
 	resp["user"] = user
 	return resp
-  }
-
-
+}
 
 func getUserId(vars string) []primitive.M {
 
@@ -347,12 +356,6 @@ func getAllUsers() []primitive.M {
 	cur.Close(context.Background())
 	return results
 }
-
-
-
-
-
-
 
 /* ****ARTICLES BLOCK****  */
 func returnAllArticles(w http.ResponseWriter, r *http.Request) {

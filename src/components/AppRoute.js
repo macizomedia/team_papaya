@@ -1,13 +1,15 @@
 import React from "react";
 import { Redirect, Route } from "react-router-dom";
-import { CountryProvider } from "../store/CountryProvider";
 import { useAuthState } from "../store/index";
+
+/* Remember to unlock that console.log to inspect what is going on 
+in the app if needed it. This component should not be updated. It only 
+server to protect the routes */
 
 const AppRoutes = ({ component: Component, path, isPrivate, ...rest }) => {
   const { currentUser } = useAuthState();
-  console.log(currentUser);
+  // console.log("from app" + JSON.stringify(currentUser, null, 2));
   return (
-    <CountryProvider>
 
       <Route
         path={path}
@@ -15,13 +17,11 @@ const AppRoutes = ({ component: Component, path, isPrivate, ...rest }) => {
           isPrivate && !Boolean(currentUser.token) ? (
             <Redirect to={{ pathname: "/login" }} />
           ) : (
-
-            <Component {...props} />
+            <Component { ...props} />
           )
         }
         {...rest}
       />
-    </CountryProvider>
   );
 };
 

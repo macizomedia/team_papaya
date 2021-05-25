@@ -1,0 +1,60 @@
+.App{
+    background-color:#5e6061;
+}
+
+.dashboard{
+    width: 100%;
+    height:auto;
+   border-radius: 10px;
+}
+
+.frame,
+.card,
+.map{
+    box-shadow: -3px 4px 10px gray;
+    padding: 10px;
+}
+
+.fig{
+    width: 100%;
+    padding: 10px;
+    color: #51608C;    
+}
+
+.fig:hover{
+    text-decoration: none;
+}
+
+img,
+iframe{
+    border-radius: 10px;
+}
+a{
+    color: #51608C;
+    
+}
+a:hover{
+    text-decoration: none;
+    text-transform: capitalize;
+}
+
+.Logout{
+    margin-bottom: 15px;
+    margin-top: 150px;
+}
+.ALink{
+    color: #51608C;
+   
+   
+
+} 
+.ALink:hover{
+    text-decoration: none;
+    
+    color: #3b508f;
+
+}
+.link-btn:hover{
+        transform:scale(1.3);
+        color: rgb(48, 46, 46);
+}

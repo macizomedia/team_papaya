@@ -1,83 +1,57 @@
+import { useAuthState } from "../../store/index";
+import "./Dashboard.css";
+import Map from "../Map";
 import React from "react";
-import { useAuthDispatch, logout, useAuthState } from "../../store/index";
+import Users from "../Users";
+import Articles from "../Articles";
 
 function Dashboard({ history }) {
-  const dispatch = useAuthDispatch();
-  const { currentUser } = useAuthState();
+    const { currentUser } = useAuthState();
 
-  const liStyle = { color: "red", fontSize: "23px" };
-  const handleLogout = () => {
-    console.log("LOGIN-OUT");
-    logout(dispatch);
-    history.push("/login");
-  };
-  return (
-    <div style={{ padding: 10 }}>
-      <h3 className="display">Welcome {currentUser.user}</h3>
-      <div className="frame">
-        <div className="frame__header u-text-center">
-          <div>
-            <figure className="avatar">
-              <img src="https://orig04.deviantart.net/aded/f/2013/066/c/2/profile_picture_by_naivety_stock-d5x8lbn.jpg" />
-            </figure>
-          </div>
-          <div>
-            <div className="frame__title">{currentUser.user}</div>
-            <div className="frame__subtitle">Freelance Photographer</div>
-          </div>
-          <div style={liStyle} className="row">
-            <a className="col" href="#">
-              <i
-                className="fab fa-wrapper fa-facebook link-btn"
-                aria-hidden="true"
-              ></i>
-            </a>
-            <a className="col" href="#">
-              <i
-                className="fab fa-wrapper fa-twitter link-btn"
-                aria-hidden="true"
-              ></i>
-            </a>
-            <a className="col" href="#">
-              <i
-                className="fab fa-wrapper fa-instagram link-btn"
-                aria-hidden="true"
-              ></i>
-            </a>
-            <a className="col" href="#">
-              <i
-                className="fab fa-wrapper fa-medium link-btn"
-                aria-hidden="true"
-              ></i>
-            </a>
-          </div>
+    // const liStyle = { color: "red", fontSize: "23px" };
+
+    return (
+        <div>
+            <Users
+                avatar={currentUser.avatar}
+                user={currentUser.user}
+                list={currentUser.list}
+            />
+            <Map />
+            <Articles />
+            <div class="placeholder">
+                <div class="placeholder-icon">
+                    <span class="icon">
+                        <i
+                            class="fa fa-wrapper fa-map-marked-alt x-large"
+                            style={{ color: "#d13a1c" }}
+                        ></i>
+                    </span>
+                </div>
+                <h6 class="placeholder-title" style={{ color: "#d13a1c" }}>
+                    Keep Exploring
+                </h6>
+                <div class="placeholder-commands u-center">
+                    <div class="form-group">
+                        <a href="/">
+                            <button
+                                class="btn-light "
+                                style={{
+                                    color: "#d13a1c",
+                                    border: "solid #d13a1c 1px",
+                                }}
+                            >
+                                Explore More
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                <div class="placeholder-subtitle" style={{ color: "#d13a1c" }}>
+                    Find a new Destination
+                </div>
+            </div>
         </div>
-        <div className="content-no-padding">
-          <div className="divider m-0"></div>
-        </div>
-        <div className="frame__body">
-          <div className="content u-text-center">
-            <h5>Lorem! Ipsum!</h5>
-            <p>Fill.</p>
-          </div>
-        </div>
-        <div className="content-no-padding">
-          <div className="divider m-0"></div>
-        </div>
-        <div className="frame__footer">
-          <div className="frame__subtitle u-text-center">
-            <i>Ohh Lorem.</i>
-          </div>
-        </div>
-      </div>
-      <div className="card">
-        <h1>Dashboard</h1>
-        <button className="btn-dark" onClick={handleLogout}>
-          Logout
-        </button>
-      </div>
-    </div>
-  );
+    );
 }
 
 export default Dashboard;

@@ -2,6 +2,8 @@ import React from "react";
 import { useReducer } from "react";
 import { CountryReducer, initialState } from "./reducer";
 
+let list = initialState.list;
+
 export const CountryContext = React.createContext();
 export const CountryDispatchContext = React.createContext();
 
@@ -18,18 +20,17 @@ export function useCountryDispatch() {
     if (context === undefined) {
         throw new Error("Not Country Context!!!");
     }
-
     return context;
 }
 
-export function CountryProvider ({ children }) {
-    const [currentUser, dispatch] = useReducer(CountryReducer, initialState);
+export function CountryProvider({ children }) {
+    const [currentList, dispatch] = useReducer(CountryReducer, list);
 
     return (
-        <CountryContext.Provider value={{ currentUser }}>
+        <CountryContext.Provider value={{ currentList }}>
             <CountryDispatchContext.Provider value={dispatch}>
                 {children}
             </CountryDispatchContext.Provider>
         </CountryContext.Provider>
     );
-};
+}

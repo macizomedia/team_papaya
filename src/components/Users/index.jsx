@@ -6,6 +6,9 @@ createAvatar(style, {
     seed: "custom-seed",
 });
 
+/* Perhaps this component should be on view after we add more properties to
+the user object. Other properties can be dark-mode, and other preferences */
+
 export default function index({ avatar, user, list }) {
     return (
         <div

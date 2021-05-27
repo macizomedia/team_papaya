@@ -1,6 +1,20 @@
 import React from "react";
 import { VectorMap } from "react-jvectormap";
 
+/* This component was mostly reconfigured - not make changes until we have final understanding */
+/* This was mostly reconfigured - not make changes until we have final understanding */
+const mapData = {
+  CN: 100000,
+  IN: 9900,
+  SA: 86,
+  EG: 70,
+  SE: 0,
+  FI: 0,
+  FR: 0,
+  US: 20
+};
+
+
 const Map = () => {
     let color = "#32991";
     const handleClick = (e) => {
@@ -56,6 +70,7 @@ const Map = () => {
                 series={{
                     regions: [
                         {
+                            values: mapData,
                             scale: ["#BFCDD9", "#BF8756", "#8C4F2B"], //your color game's here
                             normalizeFunction: "polynomial",
                             fill: " #D9946C",

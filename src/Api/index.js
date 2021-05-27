@@ -1,4 +1,4 @@
-import { Observable } from "rxjs";
+import { from, Observable } from "rxjs";
 import { createApi } from 'unsplash-js';
 import nodeFetch from 'node-fetch';
 
@@ -35,4 +35,17 @@ export const fetchImages = (name) => {
       .catch((err) => observer.error(err))
   })
 
+}
+
+export const fetchUnsplash = (...args) => {
+  let observable;
+  const unsplashIt = async (x, fn) => unsplash.search.getPhotos({
+    query: x,
+    page: 1,
+    perPage: 6,
+  }).then(data => {
+    observable = fn(data.response.results)
+  })
+  args.map(query => unsplashIt(query, from));
+  return observable;
 }

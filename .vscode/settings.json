@@ -1,21 +1,24 @@
 {
-    "cSpell.words": [
-        "AUTHDOMAIN",
-        "Bitstream",
-        "CSRF",
-        "Genarator",
-        "Ribeira",
-        "STORAGEBUCKET",
-        "allowfullscreen",
-        "browserslist",
-        "bson",
-        "dicebear",
-        "firebaseconfig",
-        "godotenv",
-        "identicon",
-        "joho",
-        "jvectormap",
-        "mongodb",
-        "xlarge"
-    ]
+  "cSpell.words": [
+    "AUTHDOMAIN",
+    "Bitstream",
+    "CSRF",
+    "Genarator",
+    "Ribeira",
+    "STORAGEBUCKET",
+    "allowfullscreen",
+    "browserslist",
+    "bson",
+    "dicebear",
+    "firebaseconfig",
+    "godotenv",
+    "identicon",
+    "joho",
+    "jvectormap",
+    "mongodb",
+    "xlarge"
+  ],
+  "go.toolsGopath": "home/mmcs/go",
+  "go.inferGopath": false,
+
 }

@@ -27,7 +27,7 @@ export default function index() {
     const [photos, setPhotos] = useState();
 
     const fetchData = async () => {
-        return await fetch(`https://restcountries.eu/rest/v2/alpha/${id}`)
+        return await fetch(`https://restcountries.com/v3.1/alpha/${id}`)
             .then((response) => response.json())
             .then((data) => {
                 setCountry(data);

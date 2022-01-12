@@ -2,6 +2,7 @@
   "name": "create-react-app",
   "version": "0.1.0",
   "private": true,
+  "module": "commonjs",
   "dependencies": {
     "@dicebear/avatars": "^4.6.4",
     "@dicebear/micah": "^4.6.4",
@@ -36,8 +37,10 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@babel/preset-env": "^7.16.5",
     "@types/react": "^17.0.5",
     "@types/react-router": "^5.1.14",
+    "babel-jest": "^27.4.5",
     "firebase-admin": "^9.8.0"
   },
   "react-dotenv": {

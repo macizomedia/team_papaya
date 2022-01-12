@@ -45,7 +45,7 @@ export default function index({ history }) {
                     >
                         {!currentUser.token ? (
                             <a href="/login">
-                                <i class="fas fa-sign-in-alt"></i>
+                                <i className="fas fa-sign-in-alt"></i>
                             </a>
                         ) : (
                             <a href="#dropdown" className="text-yellow-300 nav-dropdown-link">
